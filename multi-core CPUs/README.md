@@ -8,6 +8,8 @@ System : STMV
 
 No of atoms: 1066628
 
+*Note: The .tpr file (pme_nvt.tpr) file used in the benchmarking is the same as the one provided in the exercise*
+
 **Performance Analysis**
 
 | Number of Nodes | Tasks per node | CPUs per task | Performance (ns/day) |
