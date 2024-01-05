@@ -22,7 +22,7 @@ No of atoms: 1066628
 |  gpu   |    gpu     |   cpu   |    cpu    |    23,961             |
 |  gpu   |    gpu     |   gpu   |    cpu    |    55,402             |
 
-## Exercise 2.1: GPU-resident mode
+## Exercise 2.2: GPU-resident mode
 
 | Bonded | Non-Bonded |   PME   |   Update  |  Performance (ns/day) |
 | -------|------------|---------|-----------|-----------------------|
