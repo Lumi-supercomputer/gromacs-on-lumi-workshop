@@ -12,7 +12,7 @@ No of atoms: 1066628
 
 **Performance Analysis**
 
-*Note: All simulations were performed on a single GPU node (4 GPUs each with 2 GCD; 64 CPUs) 
+*Note: All simulations were performed on a single GPU node (4 GPUs each with 2 GCD; 64 CPUs)* 
 
 | Bonded | Non-Bonded |   PME   |   Update  |  Performance (ns/day) |
 | -------|------------|---------|-----------|-----------------------|
