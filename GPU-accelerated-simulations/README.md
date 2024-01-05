@@ -17,7 +17,7 @@ No of atoms: 1066628
 | Bonded | Non-Bonded |   PME   |   Update  |  Performance (ns/day) |
 | -------|------------|---------|-----------|-----------------------|
 |  cpu   |    cpu     |   cpu   |    cpu    |     3,358             |
-|  cpu   |    gpu     |   cpu   |    cpu    |    18,567             |
+|  cpu   |    gpu     |   cpu   |    cpu    |    17,982             |
 |  cpu   |    gpu     |   gpu   |    cpu    |    43,158             |
 |  gpu   |    gpu     |   cpu   |    cpu    |    23,961             |
 |  gpu   |    gpu     |   gpu   |    cpu    |    55,402             |
