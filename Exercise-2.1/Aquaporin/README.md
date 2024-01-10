@@ -1,6 +1,6 @@
 **System : Aquaporin**
 
-No. of atoms: 109989
+No. of atoms: 109992
 
 1. The .tpr file (topol.tpr) file used in the benchmarking is the same as the one provided in the exercise
 2. All simulations were performed on a single GCD (1 MPI task, 7 threads per task)
