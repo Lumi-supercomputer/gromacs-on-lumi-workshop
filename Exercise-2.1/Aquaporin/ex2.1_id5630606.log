@@ -1,0 +1,2743 @@
+                      :-) GROMACS - gmx mdrun, 2023.3 (-:
+
+Copyright 1991-2023 The GROMACS Authors.
+GROMACS is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation; either version 2.1
+of the License, or (at your option) any later version.
+
+                         Current GROMACS contributors:
+       Mark Abraham           Andrey Alekseenko           Cathrine Bergh      
+      Christian Blau            Eliane Briand             Mahesh Doijade      
+    Stefan Fleischmann           Vytas Gapsys              Gaurav Garg        
+      Sergey Gorelov         Gilles Gouaillardet            Alan Gray         
+     M. Eric Irrgang         Farzaneh Jalalypour            Joe Jordan        
+    Christoph Junghans        Prashanth Kanduri          Sebastian Keller     
+     Carsten Kutzner           Justin A. Lemkul          Magnus Lundborg      
+       Pascal Merz              Vedran Miletic            Dmitry Morozov      
+       Szilard Pall             Roland Schulz             Michael Shirts      
+     Alexey Shvetsov            Balint Soproni         David van der Spoel    
+      Philip Turner             Carsten Uphoff           Alessandra Villa     
+ Sebastian Wingbermuehle        Artem Zhmurov       
+
+                         Previous GROMACS contributors:
+        Emile Apol             Rossen Apostolov           James Barnett       
+  Herman J.C. Berendsen          Par Bjelkmar           Viacheslav Bolnykh    
+        Kevin Boyd            Aldert van Buuren          Carlo Camilloni      
+     Rudi van Drunen            Anton Feenstra           Oliver Fleetwood     
+     Gerrit Groenhof            Bert de Groot             Anca Hamuraru       
+    Vincent Hindriksen          Victor Holanda           Aleksei Iupinov      
+   Dimitrios Karkoulis           Peter Kasson             Sebastian Kehl      
+        Jiri Kraus               Per Larsson              Viveca Lindahl      
+      Erik Marklund           Pieter Meulenhoff           Teemu Murtola       
+       Sander Pronk             Alfons Sijbers            Peter Tieleman      
+       Jon Vincent             Teemu Virolainen         Christian Wennberg    
+       Maarten Wolf       
+
+                  Coordinated by the GROMACS project leaders:
+                    Paul Bauer, Berk Hess, and Erik Lindahl
+
+GROMACS:      gmx mdrun, version 2023.3
+Executable:   /appl/local/csc/soft/chem/GROMACS/2023.3-hipSYCL-GPU/bin/gmx_mpi
+Data prefix:  /appl/local/csc/soft/chem/GROMACS/2023.3-hipSYCL-GPU
+Working dir:  /pfs/lustrep4/scratch/project_462000007/rkronber/gromacs/gmx-on-lumi/exercise-2.1/aquaporin
+Process ID:   25995
+Command line:
+  gmx_mpi mdrun -s aquaporin -nb gpu -pme cpu -bonded cpu -update cpu -nsteps -1 -maxh 0.1 -resethway -notunepme -g ex2.1_id5630606
+
+GROMACS version:    2023.3
+Precision:          mixed
+Memory model:       64 bit
+MPI library:        MPI
+OpenMP support:     enabled (GMX_OPENMP_MAX_THREADS = 128)
+GPU support:        SYCL (hipSYCL)
+NB cluster size:    8 (cluster-pair splitting off)
+SIMD instructions:  AVX2_256
+CPU FFT library:    commercial-fftw-3.3.10-sse2-avx-avx2-avx2_128
+GPU FFT library:    VkFFT internal (1.2.26-b15cb0ca3e884bdb6c901a12d87aa8aadf7637d8) with HIP backend
+Multi-GPU FFT:      none
+RDTSCP usage:       enabled
+TNG support:        enabled
+Hwloc support:      disabled
+Tracing support:    disabled
+C compiler:         /appl/lumi/SW/LUMI-22.08/G/EB/rocm/5.3.3/llvm/bin/clang Clang 15.0.0
+C compiler flags:   -mavx2 -mfma -Wno-missing-field-initializers -O3 -DNDEBUG
+C++ compiler:       /appl/lumi/SW/LUMI-22.08/G/EB/rocm/5.3.3/llvm/bin/clang++ Clang 15.0.0
+C++ compiler flags: -mavx2 -mfma -Wno-reserved-identifier -Wno-missing-field-initializers -Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-source-uses-openmp -Wno-c++17-extensions -Wno-documentation-unknown-command -Wno-covered-switch-default -Wno-switch-enum -Wno-extra-semi-stmt -Wno-weak-vtables -Wno-shadow -Wno-padded -Wno-reserved-id-macro -Wno-double-promotion -Wno-exit-time-destructors -Wno-global-constructors -Wno-documentation -Wno-format-nonliteral -Wno-used-but-marked-unused -Wno-float-equal -Wno-cuda-compat -Wno-conditional-uninitialized -Wno-conversion -Wno-disabled-macro-expansion -Wno-unused-macros -Wno-unused-parameter -Wno-unused-variable -Wno-newline-eof -Wno-old-style-cast -Wno-zero-as-null-pointer-constant -Wno-unused-but-set-variable -Wno-sign-compare -Wno-unused-result -fopenmp=libomp -O3 -DNDEBUG
+BLAS library:       External - user-supplied
+LAPACK library:     External - user-supplied
+hipSYCL launcher:   /appl/local/csc/soft/chem/hipSYCL/0.9.4-cpeGNU-22.08/lib/cmake/hipSYCL/syclcc-launcher
+hipSYCL flags:      -Wno-unknown-cuda-version -Wno-unknown-attributes  --hipsycl-targets="hip:gfx90a"
+hipSYCL GPU flags:  -ffast-math;-fgpu-inline-threshold=99999
+hipSYCL targets:    hip:gfx90a
+hipSYCL version:    hipSYCL 0.9.4-git
+
+
+Running on 1 node with total 7 cores, 14 processing units, 1 compatible GPU
+Hardware detected on host nid005067 (the node of MPI rank 0):
+  CPU info:
+    Vendor: AMD
+    Brand:  AMD EPYC 7A53 64-Core Processor                
+    Family: 25   Model: 48   Stepping: 1
+    Features: aes amd apic avx avx2 clfsh cmov cx8 cx16 f16c fma htt lahf misalignsse mmx msr nonstop_tsc pcid pclmuldq pdpe1gb popcnt pse rdrnd rdtscp sha sse2 sse3 sse4a sse4.1 sse4.2 ssse3 x2apic
+  Hardware topology: Basic
+    Packages, cores, and logical processors:
+    [indices refer to OS logical processors]
+      Package  0: [   1  65] [   2  66] [   3  67] [   4  68] [   5  69] [   6  70] [   7  71]
+    CPU limit set by OS: -1   Recommended max number of threads: 14
+  GPU info:
+    Number of GPUs detected: 1
+    #0: name: , architecture 9.0.10, vendor: AMD, device version: 1.2 hipSYCL 0.9.4-git, driver version 50322062, status: compatible
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+M. J. Abraham, T. Murtola, R. Schulz, S. Páll, J. C. Smith, B. Hess, E.
+Lindahl
+GROMACS: High performance molecular simulations through multi-level
+parallelism from laptops to supercomputers
+SoftwareX 1 (2015) pp. 19-25
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+S. Páll, M. J. Abraham, C. Kutzner, B. Hess, E. Lindahl
+Tackling Exascale Software Challenges in Molecular Dynamics Simulations with
+GROMACS
+In S. Markidis & E. Laure (Eds.), Solving Software Challenges for Exascale 8759 (2015) pp. 3-27
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+S. Pronk, S. Páll, R. Schulz, P. Larsson, P. Bjelkmar, R. Apostolov, M. R.
+Shirts, J. C. Smith, P. M. Kasson, D. van der Spoel, B. Hess, and E. Lindahl
+GROMACS 4.5: a high-throughput and highly parallel open source molecular
+simulation toolkit
+Bioinformatics 29 (2013) pp. 845-54
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+B. Hess and C. Kutzner and D. van der Spoel and E. Lindahl
+GROMACS 4: Algorithms for highly efficient, load-balanced, and scalable
+molecular simulation
+J. Chem. Theory Comput. 4 (2008) pp. 435-447
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+D. van der Spoel, E. Lindahl, B. Hess, G. Groenhof, A. E. Mark and H. J. C.
+Berendsen
+GROMACS: Fast, Flexible and Free
+J. Comp. Chem. 26 (2005) pp. 1701-1719
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+E. Lindahl and B. Hess and D. van der Spoel
+GROMACS 3.0: A package for molecular simulation and trajectory analysis
+J. Mol. Mod. 7 (2001) pp. 306-317
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+H. J. C. Berendsen, D. van der Spoel and R. van Drunen
+GROMACS: A message-passing parallel molecular dynamics implementation
+Comp. Phys. Comm. 91 (1995) pp. 43-56
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE CITE THE DOI FOR THIS VERSION OF GROMACS ++++
+https://doi.org/10.5281/zenodo.10017686
+-------- -------- --- Thank You --- -------- --------
+
+
+The number of OpenMP threads was set by environment variable OMP_NUM_THREADS to 7
+
+Input Parameters:
+   integrator                     = md
+   tinit                          = 0
+   dt                             = 0.0025
+   nsteps                         = -1
+   init-step                      = 0
+   simulation-part                = 1
+   mts                            = false
+   comm-mode                      = Linear
+   nstcomm                        = 200
+   bd-fric                        = 0
+   ld-seed                        = -1343948802
+   emtol                          = 10
+   emstep                         = 0.01
+   niter                          = 20
+   fcstep                         = 0
+   nstcgsteep                     = 1000
+   nbfgscorr                      = 10
+   rtpi                           = 0.05
+   nstxout                        = 0
+   nstvout                        = 0
+   nstfout                        = 0
+   nstlog                         = 200000
+   nstcalcenergy                  = 200
+   nstenergy                      = 2000000
+   nstxout-compressed             = 20000
+   compressed-x-precision         = 1000
+   cutoff-scheme                  = Verlet
+   nstlist                        = 40
+   pbc                            = xyz
+   periodic-molecules             = false
+   verlet-buffer-tolerance        = 0.005
+   rlist                          = 1.2
+   coulombtype                    = PME
+   coulomb-modifier               = Potential-shift
+   rcoulomb-switch                = 0
+   rcoulomb                       = 1.2
+   epsilon-r                      = 1
+   epsilon-rf                     = inf
+   vdw-type                       = Cut-off
+   vdw-modifier                   = Force-switch
+   rvdw-switch                    = 1
+   rvdw                           = 1.2
+   DispCorr                       = No
+   table-extension                = 1
+   fourierspacing                 = 0.14
+   fourier-nx                     = 84
+   fourier-ny                     = 84
+   fourier-nz                     = 72
+   pme-order                      = 4
+   ewald-rtol                     = 1e-06
+   ewald-rtol-lj                  = 0.001
+   lj-pme-comb-rule               = Geometric
+   ewald-geometry                 = 3d
+   epsilon-surface                = 0
+   ensemble-temperature-setting   = constant
+   ensemble-temperature           = 310
+   tcoupl                         = V-rescale
+   nsttcouple                     = 50
+   nh-chain-length                = 0
+   print-nose-hoover-chain-variables = false
+   pcoupl                         = C-rescale
+   pcoupltype                     = Semiisotropic
+   nstpcouple                     = 20
+   tau-p                          = 5
+   compressibility (3x3):
+      compressibility[    0]={ 4.50000e-05,  0.00000e+00,  0.00000e+00}
+      compressibility[    1]={ 0.00000e+00,  4.50000e-05,  0.00000e+00}
+      compressibility[    2]={ 0.00000e+00,  0.00000e+00,  4.50000e-05}
+   ref-p (3x3):
+      ref-p[    0]={ 1.00000e+00,  0.00000e+00,  0.00000e+00}
+      ref-p[    1]={ 0.00000e+00,  1.00000e+00,  0.00000e+00}
+      ref-p[    2]={ 0.00000e+00,  0.00000e+00,  1.00000e+00}
+   refcoord-scaling               = COM
+   posres-com (3):
+      posres-com[0]= 0.00000e+00
+      posres-com[1]= 0.00000e+00
+      posres-com[2]= 0.00000e+00
+   posres-comB (3):
+      posres-comB[0]= 0.00000e+00
+      posres-comB[1]= 0.00000e+00
+      posres-comB[2]= 0.00000e+00
+   QMMM                           = false
+qm-opts:
+   ngQM                           = 0
+   constraint-algorithm           = Lincs
+   continuation                   = false
+   Shake-SOR                      = false
+   shake-tol                      = 0.0001
+   lincs-order                    = 4
+   lincs-iter                     = 1
+   lincs-warnangle                = 30
+   nwall                          = 0
+   wall-type                      = 9-3
+   wall-r-linpot                  = -1
+   wall-atomtype[0]               = -1
+   wall-atomtype[1]               = -1
+   wall-density[0]                = 0
+   wall-density[1]                = 0
+   wall-ewald-zfac                = 3
+   pull                           = true
+   pull-cylinder-r                = 1.5
+   pull-constr-tol                = 1e-06
+   pull-print-COM                 = false
+   pull-print-ref-value           = true
+   pull-print-components          = false
+   pull-nstxout                   = 2000
+   pull-nstfout                   = 0
+   pull-pbc-ref-prev-step-com     = true
+   pull-xout-average              = false
+   pull-fout-average              = false
+   pull-ngroups                   = 9
+   pull-group 0:
+     atom: not available
+     weight: not available
+     pbcatom                        = -1
+   pull-group 1:
+     atom (951):
+        atom[0]=0
+        atom[1]=4
+        atom[2,...,4] = {7,...,9}
+        atom[5]=11
+        atom[6,...,8] = {17,...,19}
+        atom[9]=21
+        atom[10,...,12] = {24,...,26}
+        atom[13]=28
+        atom[14,...,16] = {40,...,42}
+        atom[17]=44
+        atom[18,...,20] = {50,...,52}
+        atom[21]=54
+        atom[22,...,24] = {70,...,72}
+        atom[25]=74
+        atom[26,...,28] = {77,...,79}
+        atom[29]=81
+        atom[30,...,32] = {88,...,90}
+        atom[33]=92
+        atom[34,...,36] = {108,...,110}
+        atom[37]=112
+        atom[38,...,40] = {120,...,122}
+        atom[41]=124
+        atom[42,...,44] = {132,...,134}
+        atom[45]=136
+        atom[46,...,48] = {143,...,145}
+        atom[49]=147
+        atom[50,...,52] = {163,...,165}
+        atom[53]=167
+        atom[54,...,56] = {174,...,176}
+        atom[57]=178
+        atom[58,...,60] = {193,...,195}
+        atom[61]=197
+        atom[62,...,64] = {203,...,205}
+        atom[65]=207
+        atom[66,...,68] = {214,...,216}
+        atom[69]=218
+        atom[70,...,72] = {233,...,235}
+        atom[73]=237
+        atom[74,...,76] = {257,...,259}
+        atom[77]=261
+        atom[78,...,80] = {267,...,269}
+        atom[81]=271
+        atom[82,...,84] = {288,...,290}
+        atom[85]=292
+        atom[86,...,88] = {307,...,309}
+        atom[89]=311
+        atom[90,...,92] = {317,...,319}
+        atom[93]=321
+        atom[94,...,96] = {332,...,334}
+        atom[97]=336
+        atom[98,...,100] = {352,...,354}
+        atom[101]=356
+        atom[102,...,104] = {371,...,373}
+        atom[105]=375
+        atom[106,...,108] = {382,...,384}
+        atom[109]=386
+        atom[110,...,112] = {396,...,398}
+        atom[113]=400
+        atom[114,...,116] = {415,...,417}
+        atom[117]=419
+        atom[118,...,120] = {434,...,436}
+        atom[121]=438
+        atom[122,...,124] = {454,...,456}
+        atom[125]=458
+        atom[126,...,128] = {470,...,472}
+        atom[129]=474
+        atom[130,...,132] = {490,...,492}
+        atom[133]=494
+        atom[134,...,136] = {500,...,502}
+        atom[137]=504
+        atom[138,...,140] = {507,...,509}
+        atom[141]=511
+        atom[142,...,144] = {523,...,525}
+        atom[145]=527
+        atom[146,...,148] = {530,...,532}
+        atom[149]=534
+        atom[150,...,152] = {541,...,543}
+        atom[153]=545
+        atom[154,...,156] = {551,...,553}
+        atom[157]=555
+        atom[158,...,160] = {570,...,572}
+        atom[161]=574
+        atom[162,...,164] = {580,...,582}
+        atom[165]=584
+        atom[166,...,168] = {601,...,603}
+        atom[169]=605
+        atom[170,...,172] = {611,...,613}
+        atom[173]=615
+        atom[174,...,176] = {633,...,635}
+        atom[177]=637
+        atom[178,...,180] = {652,...,654}
+        atom[181]=656
+        atom[182,...,184] = {666,...,668}
+        atom[185]=670
+        atom[186,...,188] = {677,...,679}
+        atom[189]=681
+        atom[190,...,192] = {689,...,691}
+        atom[193]=693
+        atom[194,...,196] = {699,...,701}
+        atom[197]=703
+        atom[198,...,200] = {709,...,711}
+        atom[201]=713
+        atom[202,...,204] = {728,...,730}
+        atom[205]=732
+        atom[206,...,208] = {740,...,742}
+        atom[209]=744
+        atom[210,...,212] = {754,...,756}
+        atom[213]=760
+        atom[214,...,216] = {768,...,770}
+        atom[217]=772
+        atom[218,...,220] = {775,...,777}
+        atom[221]=779
+        atom[222,...,224] = {794,...,796}
+        atom[225]=798
+        atom[226,...,228] = {810,...,812}
+        atom[229]=814
+        atom[230,...,232] = {820,...,822}
+        atom[233]=824
+        atom[234,...,236] = {839,...,841}
+        atom[237]=843
+        atom[238,...,240] = {849,...,851}
+        atom[241]=853
+        atom[242,...,244] = {865,...,867}
+        atom[245]=869
+        atom[246,...,248] = {876,...,878}
+        atom[249]=880
+        atom[250,...,252] = {893,...,895}
+        atom[253]=897
+        atom[254,...,256] = {900,...,902}
+        atom[257]=904
+        atom[258,...,260] = {920,...,922}
+        atom[261]=924
+        atom[262,...,264] = {930,...,932}
+        atom[265]=934
+        atom[266,...,268] = {949,...,951}
+        atom[269]=953
+        atom[270,...,272] = {969,...,971}
+        atom[273]=973
+        atom[274,...,276] = {985,...,987}
+        atom[277]=989
+        atom[278,...,280] = {995,...,997}
+        atom[281]=999
+        atom[282,...,284] = {1011,...,1013}
+        atom[285]=1015
+        atom[286,...,288] = {1021,...,1023}
+        atom[289]=1025
+        atom[290,...,292] = {1040,...,1042}
+        atom[293]=1044
+        atom[294,...,296] = {1047,...,1049}
+        atom[297]=1051
+        atom[298,...,300] = {1057,...,1059}
+        atom[301]=1061
+        atom[302,...,304] = {1071,...,1073}
+        atom[305]=1075
+        atom[306,...,308] = {1090,...,1092}
+        atom[309]=1094
+        atom[310,...,312] = {1101,...,1103}
+        atom[313]=1105
+        atom[314,...,316] = {1108,...,1110}
+        atom[317]=1112
+        atom[318,...,320] = {1115,...,1117}
+        atom[321]=1119
+        atom[322,...,324] = {1132,...,1134}
+        atom[325]=1136
+        atom[326,...,328] = {1148,...,1150}
+        atom[329]=1152
+        atom[330,...,332] = {1162,...,1164}
+        atom[333]=1168
+        atom[334,...,336] = {1176,...,1178}
+        atom[337]=1180
+        atom[338,...,340] = {1186,...,1188}
+        atom[341]=1190
+        atom[342,...,344] = {1202,...,1204}
+        atom[345]=1206
+        atom[346,...,348] = {1216,...,1218}
+        atom[349]=1220
+        atom[350,...,352] = {1236,...,1238}
+        atom[353]=1240
+        atom[354,...,356] = {1243,...,1245}
+        atom[357]=1247
+        atom[358,...,360] = {1262,...,1264}
+        atom[361]=1266
+        atom[362,...,364] = {1272,...,1274}
+        atom[365]=1276
+        atom[366,...,368] = {1288,...,1290}
+        atom[369]=1292
+        atom[370,...,372] = {1295,...,1297}
+        atom[373]=1299
+        atom[374,...,376] = {1302,...,1304}
+        atom[377]=1306
+        atom[378,...,380] = {1319,...,1321}
+        atom[381]=1323
+        atom[382,...,384] = {1338,...,1340}
+        atom[385]=1342
+        atom[386,...,388] = {1352,...,1354}
+        atom[389]=1356
+        atom[390,...,392] = {1368,...,1370}
+        atom[393]=1372
+        atom[394,...,396] = {1387,...,1389}
+        atom[397]=1391
+        atom[398,...,400] = {1401,...,1403}
+        atom[401]=1405
+        atom[402,...,404] = {1408,...,1410}
+        atom[405]=1412
+        atom[406,...,408] = {1424,...,1426}
+        atom[409]=1428
+        atom[410,...,412] = {1444,...,1446}
+        atom[413]=1448
+        atom[414,...,416] = {1465,...,1467}
+        atom[417]=1469
+        atom[418,...,420] = {1489,...,1491}
+        atom[421]=1493
+        atom[422,...,424] = {1508,...,1510}
+        atom[425]=1512
+        atom[426,...,428] = {1518,...,1520}
+        atom[429]=1522
+        atom[430,...,432] = {1535,...,1537}
+        atom[433]=1539
+        atom[434,...,436] = {1554,...,1556}
+        atom[437]=1558
+        atom[438,...,440] = {1573,...,1575}
+        atom[441]=1577
+        atom[442,...,444] = {1580,...,1582}
+        atom[445]=1584
+        atom[446,...,448] = {1591,...,1593}
+        atom[449]=1595
+        atom[450,...,452] = {1605,...,1607}
+        atom[453]=1609
+        atom[454,...,456] = {1615,...,1617}
+        atom[457]=1619
+        atom[458,...,460] = {1625,...,1627}
+        atom[461]=1629
+        atom[462,...,464] = {1636,...,1638}
+        atom[465]=1640
+        atom[466,...,468] = {1656,...,1658}
+        atom[469]=1660
+        atom[470,...,472] = {1675,...,1677}
+        atom[473]=1679
+        atom[474,...,476] = {1694,...,1696}
+        atom[477]=1698
+        atom[478,...,480] = {1716,...,1718}
+        atom[481]=1720
+        atom[482,...,484] = {1737,...,1739}
+        atom[485]=1741
+        atom[486,...,488] = {1753,...,1755}
+        atom[489]=1757
+        atom[490,...,492] = {1767,...,1769}
+        atom[493]=1771
+        atom[494,...,496] = {1774,...,1776}
+        atom[497]=1778
+        atom[498,...,500] = {1781,...,1783}
+        atom[501]=1785
+        atom[502,...,504] = {1800,...,1802}
+        atom[505]=1804
+        atom[506,...,508] = {1810,...,1812}
+        atom[509]=1814
+        atom[510,...,512] = {1826,...,1828}
+        atom[513]=1832
+        atom[514,...,516] = {1840,...,1842}
+        atom[517]=1844
+        atom[518,...,520] = {1854,...,1856}
+        atom[521]=1858
+        atom[522,...,524] = {1871,...,1873}
+        atom[525]=1875
+        atom[526,...,528] = {1882,...,1884}
+        atom[529]=1886
+        atom[530,...,532] = {1898,...,1900}
+        atom[533]=1902
+        atom[534,...,536] = {1908,...,1910}
+        atom[537]=1912
+        atom[538,...,540] = {1918,...,1920}
+        atom[541]=1922
+        atom[542,...,544] = {1925,...,1927}
+        atom[545]=1929
+        atom[546,...,548] = {1944,...,1946}
+        atom[549]=1948
+        atom[550,...,552] = {1951,...,1953}
+        atom[553]=1955
+        atom[554,...,556] = {1962,...,1964}
+        atom[557]=1966
+        atom[558,...,560] = {1981,...,1983}
+        atom[561]=1985
+        atom[562,...,564] = {1996,...,1998}
+        atom[565]=2000
+        atom[566,...,568] = {2003,...,2005}
+        atom[569]=2007
+        atom[570,...,572] = {2019,...,2021}
+        atom[573]=2023
+        atom[574,...,576] = {2035,...,2037}
+        atom[577]=2039
+        atom[578,...,580] = {2052,...,2054}
+        atom[581]=2056
+        atom[582,...,584] = {2067,...,2069}
+        atom[585]=2071
+        atom[586,...,588] = {2086,...,2088}
+        atom[589]=2090
+        atom[590,...,592] = {2105,...,2107}
+        atom[593]=2109
+        atom[594,...,596] = {2124,...,2126}
+        atom[597]=2128
+        atom[598,...,600] = {2138,...,2140}
+        atom[601]=2142
+        atom[602,...,604] = {2158,...,2160}
+        atom[605]=2162
+        atom[606,...,608] = {2168,...,2170}
+        atom[609]=2172
+        atom[610,...,612] = {2187,...,2189}
+        atom[613]=2191
+        atom[614,...,616] = {2203,...,2205}
+        atom[617]=2207
+        atom[618,...,620] = {2224,...,2226}
+        atom[621]=2228
+        atom[622,...,624] = {2238,...,2240}
+        atom[625]=2242
+        atom[626,...,628] = {2254,...,2256}
+        atom[629]=2258
+        atom[630,...,632] = {2275,...,2277}
+        atom[633]=2279
+        atom[634,...,636] = {2285,...,2287}
+        atom[637]=2289
+        atom[638,...,640] = {2299,...,2301}
+        atom[641]=2303
+        atom[642,...,644] = {2309,...,2311}
+        atom[645]=2313
+        atom[646,...,648] = {2319,...,2321}
+        atom[649]=2323
+        atom[650,...,652] = {2331,...,2333}
+        atom[653]=2337
+        atom[654,...,656] = {2345,...,2347}
+        atom[657]=2349
+        atom[658,...,660] = {2367,...,2369}
+        atom[661]=2371
+        atom[662,...,664] = {2389,...,2391}
+        atom[665]=2393
+        atom[666,...,668] = {2396,...,2398}
+        atom[669]=2400
+        atom[670,...,672] = {2407,...,2409}
+        atom[673]=2411
+        atom[674,...,676] = {2426,...,2428}
+        atom[677]=2430
+        atom[678,...,680] = {2433,...,2435}
+        atom[681]=2437
+        atom[682,...,684] = {2447,...,2449}
+        atom[685]=2451
+        atom[686,...,688] = {2466,...,2468}
+        atom[689]=2470
+        atom[690,...,692] = {2476,...,2478}
+        atom[693]=2482
+        atom[694,...,696] = {2490,...,2492}
+        atom[697]=2494
+        atom[698,...,700] = {2509,...,2511}
+        atom[701]=2513
+        atom[702,...,704] = {2519,...,2521}
+        atom[705]=2523
+        atom[706,...,708] = {2538,...,2540}
+        atom[709]=2542
+        atom[710,...,712] = {2545,...,2547}
+        atom[713]=2549
+        atom[714,...,716] = {2564,...,2566}
+        atom[717]=2568
+        atom[718,...,720] = {2583,...,2585}
+        atom[721]=2587
+        atom[722,...,724] = {2599,...,2601}
+        atom[725]=2603
+        atom[726,...,728] = {2606,...,2608}
+        atom[729]=2610
+        atom[730,...,732] = {2616,...,2618}
+        atom[733]=2620
+        atom[734,...,736] = {2630,...,2632}
+        atom[737]=2634
+        atom[738,...,740] = {2649,...,2651}
+        atom[741]=2653
+        atom[742,...,744] = {2668,...,2670}
+        atom[745]=2672
+        atom[746,...,748] = {2678,...,2680}
+        atom[749]=2682
+        atom[750,...,752] = {2688,...,2690}
+        atom[753]=2692
+        atom[754,...,756] = {2695,...,2697}
+        atom[757]=2701
+        atom[758,...,760] = {2709,...,2711}
+        atom[761]=2713
+        atom[762,...,764] = {2729,...,2731}
+        atom[765]=2733
+        atom[766,...,768] = {2740,...,2742}
+        atom[769]=2744
+        atom[770,...,772] = {2747,...,2749}
+        atom[773]=2751
+        atom[774,...,776] = {2754,...,2756}
+        atom[777]=2758
+        atom[778,...,780] = {2765,...,2767}
+        atom[781]=2769
+        atom[782,...,784] = {2782,...,2784}
+        atom[785]=2786
+        atom[786,...,788] = {2796,...,2798}
+        atom[789]=2802
+        atom[790,...,792] = {2810,...,2812}
+        atom[793]=2814
+        atom[794,...,796] = {2820,...,2822}
+        atom[797]=2824
+        atom[798,...,800] = {2844,...,2846}
+        atom[801]=2848
+        atom[802,...,804] = {2855,...,2857}
+        atom[805]=2859
+        atom[806,...,808] = {2875,...,2877}
+        atom[809]=2879
+        atom[810,...,812] = {2882,...,2884}
+        atom[813]=2888
+        atom[814,...,816] = {2896,...,2898}
+        atom[817]=2900
+        atom[818,...,820] = {2906,...,2908}
+        atom[821]=2910
+        atom[822,...,824] = {2922,...,2924}
+        atom[825]=2926
+        atom[826,...,828] = {2932,...,2934}
+        atom[829]=2936
+        atom[830,...,832] = {2942,...,2944}
+        atom[833]=2946
+        atom[834,...,836] = {2949,...,2951}
+        atom[837]=2953
+        atom[838,...,840] = {2961,...,2963}
+        atom[841]=2965
+        atom[842,...,844] = {2981,...,2983}
+        atom[845]=2985
+        atom[846,...,848] = {2992,...,2994}
+        atom[849]=2996
+        atom[850,...,852] = {2999,...,3001}
+        atom[853]=3003
+        atom[854,...,856] = {3016,...,3018}
+        atom[857]=3020
+        atom[858,...,860] = {3040,...,3042}
+        atom[861]=3044
+        atom[862,...,864] = {3056,...,3058}
+        atom[865]=3060
+        atom[866,...,868] = {3077,...,3079}
+        atom[869]=3081
+        atom[870,...,872] = {3101,...,3103}
+        atom[873]=3105
+        atom[874,...,876] = {3117,...,3119}
+        atom[877]=3121
+        atom[878,...,880] = {3124,...,3126}
+        atom[881]=3130
+        atom[882,...,884] = {3138,...,3140}
+        atom[885]=3142
+        atom[886,...,888] = {3157,...,3159}
+        atom[889]=3161
+        atom[890,...,892] = {3176,...,3178}
+        atom[893]=3180
+        atom[894,...,896] = {3183,...,3185}
+        atom[897]=3187
+        atom[898,...,900] = {3190,...,3192}
+        atom[901]=3194
+        atom[902,...,904] = {3197,...,3199}
+        atom[905]=3201
+        atom[906,...,908] = {3216,...,3218}
+        atom[909]=3220
+        atom[910,...,912] = {3226,...,3228}
+        atom[913]=3230
+        atom[914,...,916] = {3233,...,3235}
+        atom[917]=3237
+        atom[918,...,920] = {3252,...,3254}
+        atom[921]=3256
+        atom[922,...,924] = {3271,...,3273}
+        atom[925]=3275
+        atom[926,...,928] = {3292,...,3294}
+        atom[929]=3296
+        atom[930,...,932] = {3299,...,3301}
+        atom[933]=3303
+        atom[934,...,936] = {3313,...,3315}
+        atom[937]=3317
+        atom[938,...,940] = {3329,...,3331}
+        atom[941]=3333
+        atom[942,...,944] = {3349,...,3351}
+        atom[945]=3353
+        atom[946,...,948] = {3366,...,3368}
+        atom[949]=3370
+        atom[950]=3373
+     weight: not available
+     pbcatom                        = 2786
+   pull-group 2:
+     atom (4):
+        atom[0,...,3] = {109976,...,109979}
+     weight: not available
+     pbcatom                        = 109977
+   pull-group 3:
+     atom (951):
+        atom[0]=3376
+        atom[1]=3380
+        atom[2,...,4] = {3383,...,3385}
+        atom[5]=3387
+        atom[6,...,8] = {3393,...,3395}
+        atom[9]=3397
+        atom[10,...,12] = {3400,...,3402}
+        atom[13]=3404
+        atom[14,...,16] = {3416,...,3418}
+        atom[17]=3420
+        atom[18,...,20] = {3426,...,3428}
+        atom[21]=3430
+        atom[22,...,24] = {3446,...,3448}
+        atom[25]=3450
+        atom[26,...,28] = {3453,...,3455}
+        atom[29]=3457
+        atom[30,...,32] = {3464,...,3466}
+        atom[33]=3468
+        atom[34,...,36] = {3484,...,3486}
+        atom[37]=3488
+        atom[38,...,40] = {3496,...,3498}
+        atom[41]=3500
+        atom[42,...,44] = {3508,...,3510}
+        atom[45]=3512
+        atom[46,...,48] = {3519,...,3521}
+        atom[49]=3523
+        atom[50,...,52] = {3539,...,3541}
+        atom[53]=3543
+        atom[54,...,56] = {3550,...,3552}
+        atom[57]=3554
+        atom[58,...,60] = {3569,...,3571}
+        atom[61]=3573
+        atom[62,...,64] = {3579,...,3581}
+        atom[65]=3583
+        atom[66,...,68] = {3590,...,3592}
+        atom[69]=3594
+        atom[70,...,72] = {3609,...,3611}
+        atom[73]=3613
+        atom[74,...,76] = {3633,...,3635}
+        atom[77]=3637
+        atom[78,...,80] = {3643,...,3645}
+        atom[81]=3647
+        atom[82,...,84] = {3664,...,3666}
+        atom[85]=3668
+        atom[86,...,88] = {3683,...,3685}
+        atom[89]=3687
+        atom[90,...,92] = {3693,...,3695}
+        atom[93]=3697
+        atom[94,...,96] = {3708,...,3710}
+        atom[97]=3712
+        atom[98,...,100] = {3728,...,3730}
+        atom[101]=3732
+        atom[102,...,104] = {3747,...,3749}
+        atom[105]=3751
+        atom[106,...,108] = {3758,...,3760}
+        atom[109]=3762
+        atom[110,...,112] = {3772,...,3774}
+        atom[113]=3776
+        atom[114,...,116] = {3791,...,3793}
+        atom[117]=3795
+        atom[118,...,120] = {3810,...,3812}
+        atom[121]=3814
+        atom[122,...,124] = {3830,...,3832}
+        atom[125]=3834
+        atom[126,...,128] = {3846,...,3848}
+        atom[129]=3850
+        atom[130,...,132] = {3866,...,3868}
+        atom[133]=3870
+        atom[134,...,136] = {3876,...,3878}
+        atom[137]=3880
+        atom[138,...,140] = {3883,...,3885}
+        atom[141]=3887
+        atom[142,...,144] = {3899,...,3901}
+        atom[145]=3903
+        atom[146,...,148] = {3906,...,3908}
+        atom[149]=3910
+        atom[150,...,152] = {3917,...,3919}
+        atom[153]=3921
+        atom[154,...,156] = {3927,...,3929}
+        atom[157]=3931
+        atom[158,...,160] = {3946,...,3948}
+        atom[161]=3950
+        atom[162,...,164] = {3956,...,3958}
+        atom[165]=3960
+        atom[166,...,168] = {3977,...,3979}
+        atom[169]=3981
+        atom[170,...,172] = {3987,...,3989}
+        atom[173]=3991
+        atom[174,...,176] = {4009,...,4011}
+        atom[177]=4013
+        atom[178,...,180] = {4028,...,4030}
+        atom[181]=4032
+        atom[182,...,184] = {4042,...,4044}
+        atom[185]=4046
+        atom[186,...,188] = {4053,...,4055}
+        atom[189]=4057
+        atom[190,...,192] = {4065,...,4067}
+        atom[193]=4069
+        atom[194,...,196] = {4075,...,4077}
+        atom[197]=4079
+        atom[198,...,200] = {4085,...,4087}
+        atom[201]=4089
+        atom[202,...,204] = {4104,...,4106}
+        atom[205]=4108
+        atom[206,...,208] = {4116,...,4118}
+        atom[209]=4120
+        atom[210,...,212] = {4130,...,4132}
+        atom[213]=4136
+        atom[214,...,216] = {4144,...,4146}
+        atom[217]=4148
+        atom[218,...,220] = {4151,...,4153}
+        atom[221]=4155
+        atom[222,...,224] = {4170,...,4172}
+        atom[225]=4174
+        atom[226,...,228] = {4186,...,4188}
+        atom[229]=4190
+        atom[230,...,232] = {4196,...,4198}
+        atom[233]=4200
+        atom[234,...,236] = {4215,...,4217}
+        atom[237]=4219
+        atom[238,...,240] = {4225,...,4227}
+        atom[241]=4229
+        atom[242,...,244] = {4241,...,4243}
+        atom[245]=4245
+        atom[246,...,248] = {4252,...,4254}
+        atom[249]=4256
+        atom[250,...,252] = {4269,...,4271}
+        atom[253]=4273
+        atom[254,...,256] = {4276,...,4278}
+        atom[257]=4280
+        atom[258,...,260] = {4296,...,4298}
+        atom[261]=4300
+        atom[262,...,264] = {4306,...,4308}
+        atom[265]=4310
+        atom[266,...,268] = {4325,...,4327}
+        atom[269]=4329
+        atom[270,...,272] = {4345,...,4347}
+        atom[273]=4349
+        atom[274,...,276] = {4361,...,4363}
+        atom[277]=4365
+        atom[278,...,280] = {4371,...,4373}
+        atom[281]=4375
+        atom[282,...,284] = {4387,...,4389}
+        atom[285]=4391
+        atom[286,...,288] = {4397,...,4399}
+        atom[289]=4401
+        atom[290,...,292] = {4416,...,4418}
+        atom[293]=4420
+        atom[294,...,296] = {4423,...,4425}
+        atom[297]=4427
+        atom[298,...,300] = {4433,...,4435}
+        atom[301]=4437
+        atom[302,...,304] = {4447,...,4449}
+        atom[305]=4451
+        atom[306,...,308] = {4466,...,4468}
+        atom[309]=4470
+        atom[310,...,312] = {4477,...,4479}
+        atom[313]=4481
+        atom[314,...,316] = {4484,...,4486}
+        atom[317]=4488
+        atom[318,...,320] = {4491,...,4493}
+        atom[321]=4495
+        atom[322,...,324] = {4508,...,4510}
+        atom[325]=4512
+        atom[326,...,328] = {4524,...,4526}
+        atom[329]=4528
+        atom[330,...,332] = {4538,...,4540}
+        atom[333]=4544
+        atom[334,...,336] = {4552,...,4554}
+        atom[337]=4556
+        atom[338,...,340] = {4562,...,4564}
+        atom[341]=4566
+        atom[342,...,344] = {4578,...,4580}
+        atom[345]=4582
+        atom[346,...,348] = {4592,...,4594}
+        atom[349]=4596
+        atom[350,...,352] = {4612,...,4614}
+        atom[353]=4616
+        atom[354,...,356] = {4619,...,4621}
+        atom[357]=4623
+        atom[358,...,360] = {4638,...,4640}
+        atom[361]=4642
+        atom[362,...,364] = {4648,...,4650}
+        atom[365]=4652
+        atom[366,...,368] = {4664,...,4666}
+        atom[369]=4668
+        atom[370,...,372] = {4671,...,4673}
+        atom[373]=4675
+        atom[374,...,376] = {4678,...,4680}
+        atom[377]=4682
+        atom[378,...,380] = {4695,...,4697}
+        atom[381]=4699
+        atom[382,...,384] = {4714,...,4716}
+        atom[385]=4718
+        atom[386,...,388] = {4728,...,4730}
+        atom[389]=4732
+        atom[390,...,392] = {4744,...,4746}
+        atom[393]=4748
+        atom[394,...,396] = {4763,...,4765}
+        atom[397]=4767
+        atom[398,...,400] = {4777,...,4779}
+        atom[401]=4781
+        atom[402,...,404] = {4784,...,4786}
+        atom[405]=4788
+        atom[406,...,408] = {4800,...,4802}
+        atom[409]=4804
+        atom[410,...,412] = {4820,...,4822}
+        atom[413]=4824
+        atom[414,...,416] = {4841,...,4843}
+        atom[417]=4845
+        atom[418,...,420] = {4865,...,4867}
+        atom[421]=4869
+        atom[422,...,424] = {4884,...,4886}
+        atom[425]=4888
+        atom[426,...,428] = {4894,...,4896}
+        atom[429]=4898
+        atom[430,...,432] = {4911,...,4913}
+        atom[433]=4915
+        atom[434,...,436] = {4930,...,4932}
+        atom[437]=4934
+        atom[438,...,440] = {4949,...,4951}
+        atom[441]=4953
+        atom[442,...,444] = {4956,...,4958}
+        atom[445]=4960
+        atom[446,...,448] = {4967,...,4969}
+        atom[449]=4971
+        atom[450,...,452] = {4981,...,4983}
+        atom[453]=4985
+        atom[454,...,456] = {4991,...,4993}
+        atom[457]=4995
+        atom[458,...,460] = {5001,...,5003}
+        atom[461]=5005
+        atom[462,...,464] = {5012,...,5014}
+        atom[465]=5016
+        atom[466,...,468] = {5032,...,5034}
+        atom[469]=5036
+        atom[470,...,472] = {5051,...,5053}
+        atom[473]=5055
+        atom[474,...,476] = {5070,...,5072}
+        atom[477]=5074
+        atom[478,...,480] = {5092,...,5094}
+        atom[481]=5096
+        atom[482,...,484] = {5113,...,5115}
+        atom[485]=5117
+        atom[486,...,488] = {5129,...,5131}
+        atom[489]=5133
+        atom[490,...,492] = {5143,...,5145}
+        atom[493]=5147
+        atom[494,...,496] = {5150,...,5152}
+        atom[497]=5154
+        atom[498,...,500] = {5157,...,5159}
+        atom[501]=5161
+        atom[502,...,504] = {5176,...,5178}
+        atom[505]=5180
+        atom[506,...,508] = {5186,...,5188}
+        atom[509]=5190
+        atom[510,...,512] = {5202,...,5204}
+        atom[513]=5208
+        atom[514,...,516] = {5216,...,5218}
+        atom[517]=5220
+        atom[518,...,520] = {5230,...,5232}
+        atom[521]=5234
+        atom[522,...,524] = {5247,...,5249}
+        atom[525]=5251
+        atom[526,...,528] = {5258,...,5260}
+        atom[529]=5262
+        atom[530,...,532] = {5274,...,5276}
+        atom[533]=5278
+        atom[534,...,536] = {5284,...,5286}
+        atom[537]=5288
+        atom[538,...,540] = {5294,...,5296}
+        atom[541]=5298
+        atom[542,...,544] = {5301,...,5303}
+        atom[545]=5305
+        atom[546,...,548] = {5320,...,5322}
+        atom[549]=5324
+        atom[550,...,552] = {5327,...,5329}
+        atom[553]=5331
+        atom[554,...,556] = {5338,...,5340}
+        atom[557]=5342
+        atom[558,...,560] = {5357,...,5359}
+        atom[561]=5361
+        atom[562,...,564] = {5372,...,5374}
+        atom[565]=5376
+        atom[566,...,568] = {5379,...,5381}
+        atom[569]=5383
+        atom[570,...,572] = {5395,...,5397}
+        atom[573]=5399
+        atom[574,...,576] = {5411,...,5413}
+        atom[577]=5415
+        atom[578,...,580] = {5428,...,5430}
+        atom[581]=5432
+        atom[582,...,584] = {5443,...,5445}
+        atom[585]=5447
+        atom[586,...,588] = {5462,...,5464}
+        atom[589]=5466
+        atom[590,...,592] = {5481,...,5483}
+        atom[593]=5485
+        atom[594,...,596] = {5500,...,5502}
+        atom[597]=5504
+        atom[598,...,600] = {5514,...,5516}
+        atom[601]=5518
+        atom[602,...,604] = {5534,...,5536}
+        atom[605]=5538
+        atom[606,...,608] = {5544,...,5546}
+        atom[609]=5548
+        atom[610,...,612] = {5563,...,5565}
+        atom[613]=5567
+        atom[614,...,616] = {5579,...,5581}
+        atom[617]=5583
+        atom[618,...,620] = {5600,...,5602}
+        atom[621]=5604
+        atom[622,...,624] = {5614,...,5616}
+        atom[625]=5618
+        atom[626,...,628] = {5630,...,5632}
+        atom[629]=5634
+        atom[630,...,632] = {5651,...,5653}
+        atom[633]=5655
+        atom[634,...,636] = {5661,...,5663}
+        atom[637]=5665
+        atom[638,...,640] = {5675,...,5677}
+        atom[641]=5679
+        atom[642,...,644] = {5685,...,5687}
+        atom[645]=5689
+        atom[646,...,648] = {5695,...,5697}
+        atom[649]=5699
+        atom[650,...,652] = {5707,...,5709}
+        atom[653]=5713
+        atom[654,...,656] = {5721,...,5723}
+        atom[657]=5725
+        atom[658,...,660] = {5743,...,5745}
+        atom[661]=5747
+        atom[662,...,664] = {5765,...,5767}
+        atom[665]=5769
+        atom[666,...,668] = {5772,...,5774}
+        atom[669]=5776
+        atom[670,...,672] = {5783,...,5785}
+        atom[673]=5787
+        atom[674,...,676] = {5802,...,5804}
+        atom[677]=5806
+        atom[678,...,680] = {5809,...,5811}
+        atom[681]=5813
+        atom[682,...,684] = {5823,...,5825}
+        atom[685]=5827
+        atom[686,...,688] = {5842,...,5844}
+        atom[689]=5846
+        atom[690,...,692] = {5852,...,5854}
+        atom[693]=5858
+        atom[694,...,696] = {5866,...,5868}
+        atom[697]=5870
+        atom[698,...,700] = {5885,...,5887}
+        atom[701]=5889
+        atom[702,...,704] = {5895,...,5897}
+        atom[705]=5899
+        atom[706,...,708] = {5914,...,5916}
+        atom[709]=5918
+        atom[710,...,712] = {5921,...,5923}
+        atom[713]=5925
+        atom[714,...,716] = {5940,...,5942}
+        atom[717]=5944
+        atom[718,...,720] = {5959,...,5961}
+        atom[721]=5963
+        atom[722,...,724] = {5975,...,5977}
+        atom[725]=5979
+        atom[726,...,728] = {5982,...,5984}
+        atom[729]=5986
+        atom[730,...,732] = {5992,...,5994}
+        atom[733]=5996
+        atom[734,...,736] = {6006,...,6008}
+        atom[737]=6010
+        atom[738,...,740] = {6025,...,6027}
+        atom[741]=6029
+        atom[742,...,744] = {6044,...,6046}
+        atom[745]=6048
+        atom[746,...,748] = {6054,...,6056}
+        atom[749]=6058
+        atom[750,...,752] = {6064,...,6066}
+        atom[753]=6068
+        atom[754,...,756] = {6071,...,6073}
+        atom[757]=6077
+        atom[758,...,760] = {6085,...,6087}
+        atom[761]=6089
+        atom[762,...,764] = {6105,...,6107}
+        atom[765]=6109
+        atom[766,...,768] = {6116,...,6118}
+        atom[769]=6120
+        atom[770,...,772] = {6123,...,6125}
+        atom[773]=6127
+        atom[774,...,776] = {6130,...,6132}
+        atom[777]=6134
+        atom[778,...,780] = {6141,...,6143}
+        atom[781]=6145
+        atom[782,...,784] = {6158,...,6160}
+        atom[785]=6162
+        atom[786,...,788] = {6172,...,6174}
+        atom[789]=6178
+        atom[790,...,792] = {6186,...,6188}
+        atom[793]=6190
+        atom[794,...,796] = {6196,...,6198}
+        atom[797]=6200
+        atom[798,...,800] = {6220,...,6222}
+        atom[801]=6224
+        atom[802,...,804] = {6231,...,6233}
+        atom[805]=6235
+        atom[806,...,808] = {6251,...,6253}
+        atom[809]=6255
+        atom[810,...,812] = {6258,...,6260}
+        atom[813]=6264
+        atom[814,...,816] = {6272,...,6274}
+        atom[817]=6276
+        atom[818,...,820] = {6282,...,6284}
+        atom[821]=6286
+        atom[822,...,824] = {6298,...,6300}
+        atom[825]=6302
+        atom[826,...,828] = {6308,...,6310}
+        atom[829]=6312
+        atom[830,...,832] = {6318,...,6320}
+        atom[833]=6322
+        atom[834,...,836] = {6325,...,6327}
+        atom[837]=6329
+        atom[838,...,840] = {6337,...,6339}
+        atom[841]=6341
+        atom[842,...,844] = {6357,...,6359}
+        atom[845]=6361
+        atom[846,...,848] = {6368,...,6370}
+        atom[849]=6372
+        atom[850,...,852] = {6375,...,6377}
+        atom[853]=6379
+        atom[854,...,856] = {6392,...,6394}
+        atom[857]=6396
+        atom[858,...,860] = {6416,...,6418}
+        atom[861]=6420
+        atom[862,...,864] = {6432,...,6434}
+        atom[865]=6436
+        atom[866,...,868] = {6453,...,6455}
+        atom[869]=6457
+        atom[870,...,872] = {6477,...,6479}
+        atom[873]=6481
+        atom[874,...,876] = {6493,...,6495}
+        atom[877]=6497
+        atom[878,...,880] = {6500,...,6502}
+        atom[881]=6506
+        atom[882,...,884] = {6514,...,6516}
+        atom[885]=6518
+        atom[886,...,888] = {6533,...,6535}
+        atom[889]=6537
+        atom[890,...,892] = {6552,...,6554}
+        atom[893]=6556
+        atom[894,...,896] = {6559,...,6561}
+        atom[897]=6563
+        atom[898,...,900] = {6566,...,6568}
+        atom[901]=6570
+        atom[902,...,904] = {6573,...,6575}
+        atom[905]=6577
+        atom[906,...,908] = {6592,...,6594}
+        atom[909]=6596
+        atom[910,...,912] = {6602,...,6604}
+        atom[913]=6606
+        atom[914,...,916] = {6609,...,6611}
+        atom[917]=6613
+        atom[918,...,920] = {6628,...,6630}
+        atom[921]=6632
+        atom[922,...,924] = {6647,...,6649}
+        atom[925]=6651
+        atom[926,...,928] = {6668,...,6670}
+        atom[929]=6672
+        atom[930,...,932] = {6675,...,6677}
+        atom[933]=6679
+        atom[934,...,936] = {6689,...,6691}
+        atom[937]=6693
+        atom[938,...,940] = {6705,...,6707}
+        atom[941]=6709
+        atom[942,...,944] = {6725,...,6727}
+        atom[945]=6729
+        atom[946,...,948] = {6742,...,6744}
+        atom[949]=6746
+        atom[950]=6749
+     weight: not available
+     pbcatom                        = 6162
+   pull-group 4:
+     atom (4):
+        atom[0,...,3] = {109980,...,109983}
+     weight: not available
+     pbcatom                        = 109981
+   pull-group 5:
+     atom (951):
+        atom[0]=6752
+        atom[1]=6756
+        atom[2,...,4] = {6759,...,6761}
+        atom[5]=6763
+        atom[6,...,8] = {6769,...,6771}
+        atom[9]=6773
+        atom[10,...,12] = {6776,...,6778}
+        atom[13]=6780
+        atom[14,...,16] = {6792,...,6794}
+        atom[17]=6796
+        atom[18,...,20] = {6802,...,6804}
+        atom[21]=6806
+        atom[22,...,24] = {6822,...,6824}
+        atom[25]=6826
+        atom[26,...,28] = {6829,...,6831}
+        atom[29]=6833
+        atom[30,...,32] = {6840,...,6842}
+        atom[33]=6844
+        atom[34,...,36] = {6860,...,6862}
+        atom[37]=6864
+        atom[38,...,40] = {6872,...,6874}
+        atom[41]=6876
+        atom[42,...,44] = {6884,...,6886}
+        atom[45]=6888
+        atom[46,...,48] = {6895,...,6897}
+        atom[49]=6899
+        atom[50,...,52] = {6915,...,6917}
+        atom[53]=6919
+        atom[54,...,56] = {6926,...,6928}
+        atom[57]=6930
+        atom[58,...,60] = {6945,...,6947}
+        atom[61]=6949
+        atom[62,...,64] = {6955,...,6957}
+        atom[65]=6959
+        atom[66,...,68] = {6966,...,6968}
+        atom[69]=6970
+        atom[70,...,72] = {6985,...,6987}
+        atom[73]=6989
+        atom[74,...,76] = {7009,...,7011}
+        atom[77]=7013
+        atom[78,...,80] = {7019,...,7021}
+        atom[81]=7023
+        atom[82,...,84] = {7040,...,7042}
+        atom[85]=7044
+        atom[86,...,88] = {7059,...,7061}
+        atom[89]=7063
+        atom[90,...,92] = {7069,...,7071}
+        atom[93]=7073
+        atom[94,...,96] = {7084,...,7086}
+        atom[97]=7088
+        atom[98,...,100] = {7104,...,7106}
+        atom[101]=7108
+        atom[102,...,104] = {7123,...,7125}
+        atom[105]=7127
+        atom[106,...,108] = {7134,...,7136}
+        atom[109]=7138
+        atom[110,...,112] = {7148,...,7150}
+        atom[113]=7152
+        atom[114,...,116] = {7167,...,7169}
+        atom[117]=7171
+        atom[118,...,120] = {7186,...,7188}
+        atom[121]=7190
+        atom[122,...,124] = {7206,...,7208}
+        atom[125]=7210
+        atom[126,...,128] = {7222,...,7224}
+        atom[129]=7226
+        atom[130,...,132] = {7242,...,7244}
+        atom[133]=7246
+        atom[134,...,136] = {7252,...,7254}
+        atom[137]=7256
+        atom[138,...,140] = {7259,...,7261}
+        atom[141]=7263
+        atom[142,...,144] = {7275,...,7277}
+        atom[145]=7279
+        atom[146,...,148] = {7282,...,7284}
+        atom[149]=7286
+        atom[150,...,152] = {7293,...,7295}
+        atom[153]=7297
+        atom[154,...,156] = {7303,...,7305}
+        atom[157]=7307
+        atom[158,...,160] = {7322,...,7324}
+        atom[161]=7326
+        atom[162,...,164] = {7332,...,7334}
+        atom[165]=7336
+        atom[166,...,168] = {7353,...,7355}
+        atom[169]=7357
+        atom[170,...,172] = {7363,...,7365}
+        atom[173]=7367
+        atom[174,...,176] = {7385,...,7387}
+        atom[177]=7389
+        atom[178,...,180] = {7404,...,7406}
+        atom[181]=7408
+        atom[182,...,184] = {7418,...,7420}
+        atom[185]=7422
+        atom[186,...,188] = {7429,...,7431}
+        atom[189]=7433
+        atom[190,...,192] = {7441,...,7443}
+        atom[193]=7445
+        atom[194,...,196] = {7451,...,7453}
+        atom[197]=7455
+        atom[198,...,200] = {7461,...,7463}
+        atom[201]=7465
+        atom[202,...,204] = {7480,...,7482}
+        atom[205]=7484
+        atom[206,...,208] = {7492,...,7494}
+        atom[209]=7496
+        atom[210,...,212] = {7506,...,7508}
+        atom[213]=7512
+        atom[214,...,216] = {7520,...,7522}
+        atom[217]=7524
+        atom[218,...,220] = {7527,...,7529}
+        atom[221]=7531
+        atom[222,...,224] = {7546,...,7548}
+        atom[225]=7550
+        atom[226,...,228] = {7562,...,7564}
+        atom[229]=7566
+        atom[230,...,232] = {7572,...,7574}
+        atom[233]=7576
+        atom[234,...,236] = {7591,...,7593}
+        atom[237]=7595
+        atom[238,...,240] = {7601,...,7603}
+        atom[241]=7605
+        atom[242,...,244] = {7617,...,7619}
+        atom[245]=7621
+        atom[246,...,248] = {7628,...,7630}
+        atom[249]=7632
+        atom[250,...,252] = {7645,...,7647}
+        atom[253]=7649
+        atom[254,...,256] = {7652,...,7654}
+        atom[257]=7656
+        atom[258,...,260] = {7672,...,7674}
+        atom[261]=7676
+        atom[262,...,264] = {7682,...,7684}
+        atom[265]=7686
+        atom[266,...,268] = {7701,...,7703}
+        atom[269]=7705
+        atom[270,...,272] = {7721,...,7723}
+        atom[273]=7725
+        atom[274,...,276] = {7737,...,7739}
+        atom[277]=7741
+        atom[278,...,280] = {7747,...,7749}
+        atom[281]=7751
+        atom[282,...,284] = {7763,...,7765}
+        atom[285]=7767
+        atom[286,...,288] = {7773,...,7775}
+        atom[289]=7777
+        atom[290,...,292] = {7792,...,7794}
+        atom[293]=7796
+        atom[294,...,296] = {7799,...,7801}
+        atom[297]=7803
+        atom[298,...,300] = {7809,...,7811}
+        atom[301]=7813
+        atom[302,...,304] = {7823,...,7825}
+        atom[305]=7827
+        atom[306,...,308] = {7842,...,7844}
+        atom[309]=7846
+        atom[310,...,312] = {7853,...,7855}
+        atom[313]=7857
+        atom[314,...,316] = {7860,...,7862}
+        atom[317]=7864
+        atom[318,...,320] = {7867,...,7869}
+        atom[321]=7871
+        atom[322,...,324] = {7884,...,7886}
+        atom[325]=7888
+        atom[326,...,328] = {7900,...,7902}
+        atom[329]=7904
+        atom[330,...,332] = {7914,...,7916}
+        atom[333]=7920
+        atom[334,...,336] = {7928,...,7930}
+        atom[337]=7932
+        atom[338,...,340] = {7938,...,7940}
+        atom[341]=7942
+        atom[342,...,344] = {7954,...,7956}
+        atom[345]=7958
+        atom[346,...,348] = {7968,...,7970}
+        atom[349]=7972
+        atom[350,...,352] = {7988,...,7990}
+        atom[353]=7992
+        atom[354,...,356] = {7995,...,7997}
+        atom[357]=7999
+        atom[358,...,360] = {8014,...,8016}
+        atom[361]=8018
+        atom[362,...,364] = {8024,...,8026}
+        atom[365]=8028
+        atom[366,...,368] = {8040,...,8042}
+        atom[369]=8044
+        atom[370,...,372] = {8047,...,8049}
+        atom[373]=8051
+        atom[374,...,376] = {8054,...,8056}
+        atom[377]=8058
+        atom[378,...,380] = {8071,...,8073}
+        atom[381]=8075
+        atom[382,...,384] = {8090,...,8092}
+        atom[385]=8094
+        atom[386,...,388] = {8104,...,8106}
+        atom[389]=8108
+        atom[390,...,392] = {8120,...,8122}
+        atom[393]=8124
+        atom[394,...,396] = {8139,...,8141}
+        atom[397]=8143
+        atom[398,...,400] = {8153,...,8155}
+        atom[401]=8157
+        atom[402,...,404] = {8160,...,8162}
+        atom[405]=8164
+        atom[406,...,408] = {8176,...,8178}
+        atom[409]=8180
+        atom[410,...,412] = {8196,...,8198}
+        atom[413]=8200
+        atom[414,...,416] = {8217,...,8219}
+        atom[417]=8221
+        atom[418,...,420] = {8241,...,8243}
+        atom[421]=8245
+        atom[422,...,424] = {8260,...,8262}
+        atom[425]=8264
+        atom[426,...,428] = {8270,...,8272}
+        atom[429]=8274
+        atom[430,...,432] = {8287,...,8289}
+        atom[433]=8291
+        atom[434,...,436] = {8306,...,8308}
+        atom[437]=8310
+        atom[438,...,440] = {8325,...,8327}
+        atom[441]=8329
+        atom[442,...,444] = {8332,...,8334}
+        atom[445]=8336
+        atom[446,...,448] = {8343,...,8345}
+        atom[449]=8347
+        atom[450,...,452] = {8357,...,8359}
+        atom[453]=8361
+        atom[454,...,456] = {8367,...,8369}
+        atom[457]=8371
+        atom[458,...,460] = {8377,...,8379}
+        atom[461]=8381
+        atom[462,...,464] = {8388,...,8390}
+        atom[465]=8392
+        atom[466,...,468] = {8408,...,8410}
+        atom[469]=8412
+        atom[470,...,472] = {8427,...,8429}
+        atom[473]=8431
+        atom[474,...,476] = {8446,...,8448}
+        atom[477]=8450
+        atom[478,...,480] = {8468,...,8470}
+        atom[481]=8472
+        atom[482,...,484] = {8489,...,8491}
+        atom[485]=8493
+        atom[486,...,488] = {8505,...,8507}
+        atom[489]=8509
+        atom[490,...,492] = {8519,...,8521}
+        atom[493]=8523
+        atom[494,...,496] = {8526,...,8528}
+        atom[497]=8530
+        atom[498,...,500] = {8533,...,8535}
+        atom[501]=8537
+        atom[502,...,504] = {8552,...,8554}
+        atom[505]=8556
+        atom[506,...,508] = {8562,...,8564}
+        atom[509]=8566
+        atom[510,...,512] = {8578,...,8580}
+        atom[513]=8584
+        atom[514,...,516] = {8592,...,8594}
+        atom[517]=8596
+        atom[518,...,520] = {8606,...,8608}
+        atom[521]=8610
+        atom[522,...,524] = {8623,...,8625}
+        atom[525]=8627
+        atom[526,...,528] = {8634,...,8636}
+        atom[529]=8638
+        atom[530,...,532] = {8650,...,8652}
+        atom[533]=8654
+        atom[534,...,536] = {8660,...,8662}
+        atom[537]=8664
+        atom[538,...,540] = {8670,...,8672}
+        atom[541]=8674
+        atom[542,...,544] = {8677,...,8679}
+        atom[545]=8681
+        atom[546,...,548] = {8696,...,8698}
+        atom[549]=8700
+        atom[550,...,552] = {8703,...,8705}
+        atom[553]=8707
+        atom[554,...,556] = {8714,...,8716}
+        atom[557]=8718
+        atom[558,...,560] = {8733,...,8735}
+        atom[561]=8737
+        atom[562,...,564] = {8748,...,8750}
+        atom[565]=8752
+        atom[566,...,568] = {8755,...,8757}
+        atom[569]=8759
+        atom[570,...,572] = {8771,...,8773}
+        atom[573]=8775
+        atom[574,...,576] = {8787,...,8789}
+        atom[577]=8791
+        atom[578,...,580] = {8804,...,8806}
+        atom[581]=8808
+        atom[582,...,584] = {8819,...,8821}
+        atom[585]=8823
+        atom[586,...,588] = {8838,...,8840}
+        atom[589]=8842
+        atom[590,...,592] = {8857,...,8859}
+        atom[593]=8861
+        atom[594,...,596] = {8876,...,8878}
+        atom[597]=8880
+        atom[598,...,600] = {8890,...,8892}
+        atom[601]=8894
+        atom[602,...,604] = {8910,...,8912}
+        atom[605]=8914
+        atom[606,...,608] = {8920,...,8922}
+        atom[609]=8924
+        atom[610,...,612] = {8939,...,8941}
+        atom[613]=8943
+        atom[614,...,616] = {8955,...,8957}
+        atom[617]=8959
+        atom[618,...,620] = {8976,...,8978}
+        atom[621]=8980
+        atom[622,...,624] = {8990,...,8992}
+        atom[625]=8994
+        atom[626,...,628] = {9006,...,9008}
+        atom[629]=9010
+        atom[630,...,632] = {9027,...,9029}
+        atom[633]=9031
+        atom[634,...,636] = {9037,...,9039}
+        atom[637]=9041
+        atom[638,...,640] = {9051,...,9053}
+        atom[641]=9055
+        atom[642,...,644] = {9061,...,9063}
+        atom[645]=9065
+        atom[646,...,648] = {9071,...,9073}
+        atom[649]=9075
+        atom[650,...,652] = {9083,...,9085}
+        atom[653]=9089
+        atom[654,...,656] = {9097,...,9099}
+        atom[657]=9101
+        atom[658,...,660] = {9119,...,9121}
+        atom[661]=9123
+        atom[662,...,664] = {9141,...,9143}
+        atom[665]=9145
+        atom[666,...,668] = {9148,...,9150}
+        atom[669]=9152
+        atom[670,...,672] = {9159,...,9161}
+        atom[673]=9163
+        atom[674,...,676] = {9178,...,9180}
+        atom[677]=9182
+        atom[678,...,680] = {9185,...,9187}
+        atom[681]=9189
+        atom[682,...,684] = {9199,...,9201}
+        atom[685]=9203
+        atom[686,...,688] = {9218,...,9220}
+        atom[689]=9222
+        atom[690,...,692] = {9228,...,9230}
+        atom[693]=9234
+        atom[694,...,696] = {9242,...,9244}
+        atom[697]=9246
+        atom[698,...,700] = {9261,...,9263}
+        atom[701]=9265
+        atom[702,...,704] = {9271,...,9273}
+        atom[705]=9275
+        atom[706,...,708] = {9290,...,9292}
+        atom[709]=9294
+        atom[710,...,712] = {9297,...,9299}
+        atom[713]=9301
+        atom[714,...,716] = {9316,...,9318}
+        atom[717]=9320
+        atom[718,...,720] = {9335,...,9337}
+        atom[721]=9339
+        atom[722,...,724] = {9351,...,9353}
+        atom[725]=9355
+        atom[726,...,728] = {9358,...,9360}
+        atom[729]=9362
+        atom[730,...,732] = {9368,...,9370}
+        atom[733]=9372
+        atom[734,...,736] = {9382,...,9384}
+        atom[737]=9386
+        atom[738,...,740] = {9401,...,9403}
+        atom[741]=9405
+        atom[742,...,744] = {9420,...,9422}
+        atom[745]=9424
+        atom[746,...,748] = {9430,...,9432}
+        atom[749]=9434
+        atom[750,...,752] = {9440,...,9442}
+        atom[753]=9444
+        atom[754,...,756] = {9447,...,9449}
+        atom[757]=9453
+        atom[758,...,760] = {9461,...,9463}
+        atom[761]=9465
+        atom[762,...,764] = {9481,...,9483}
+        atom[765]=9485
+        atom[766,...,768] = {9492,...,9494}
+        atom[769]=9496
+        atom[770,...,772] = {9499,...,9501}
+        atom[773]=9503
+        atom[774,...,776] = {9506,...,9508}
+        atom[777]=9510
+        atom[778,...,780] = {9517,...,9519}
+        atom[781]=9521
+        atom[782,...,784] = {9534,...,9536}
+        atom[785]=9538
+        atom[786,...,788] = {9548,...,9550}
+        atom[789]=9554
+        atom[790,...,792] = {9562,...,9564}
+        atom[793]=9566
+        atom[794,...,796] = {9572,...,9574}
+        atom[797]=9576
+        atom[798,...,800] = {9596,...,9598}
+        atom[801]=9600
+        atom[802,...,804] = {9607,...,9609}
+        atom[805]=9611
+        atom[806,...,808] = {9627,...,9629}
+        atom[809]=9631
+        atom[810,...,812] = {9634,...,9636}
+        atom[813]=9640
+        atom[814,...,816] = {9648,...,9650}
+        atom[817]=9652
+        atom[818,...,820] = {9658,...,9660}
+        atom[821]=9662
+        atom[822,...,824] = {9674,...,9676}
+        atom[825]=9678
+        atom[826,...,828] = {9684,...,9686}
+        atom[829]=9688
+        atom[830,...,832] = {9694,...,9696}
+        atom[833]=9698
+        atom[834,...,836] = {9701,...,9703}
+        atom[837]=9705
+        atom[838,...,840] = {9713,...,9715}
+        atom[841]=9717
+        atom[842,...,844] = {9733,...,9735}
+        atom[845]=9737
+        atom[846,...,848] = {9744,...,9746}
+        atom[849]=9748
+        atom[850,...,852] = {9751,...,9753}
+        atom[853]=9755
+        atom[854,...,856] = {9768,...,9770}
+        atom[857]=9772
+        atom[858,...,860] = {9792,...,9794}
+        atom[861]=9796
+        atom[862,...,864] = {9808,...,9810}
+        atom[865]=9812
+        atom[866,...,868] = {9829,...,9831}
+        atom[869]=9833
+        atom[870,...,872] = {9853,...,9855}
+        atom[873]=9857
+        atom[874,...,876] = {9869,...,9871}
+        atom[877]=9873
+        atom[878,...,880] = {9876,...,9878}
+        atom[881]=9882
+        atom[882,...,884] = {9890,...,9892}
+        atom[885]=9894
+        atom[886,...,888] = {9909,...,9911}
+        atom[889]=9913
+        atom[890,...,892] = {9928,...,9930}
+        atom[893]=9932
+        atom[894,...,896] = {9935,...,9937}
+        atom[897]=9939
+        atom[898,...,900] = {9942,...,9944}
+        atom[901]=9946
+        atom[902,...,904] = {9949,...,9951}
+        atom[905]=9953
+        atom[906,...,908] = {9968,...,9970}
+        atom[909]=9972
+        atom[910,...,912] = {9978,...,9980}
+        atom[913]=9982
+        atom[914,...,916] = {9985,...,9987}
+        atom[917]=9989
+        atom[918,...,920] = {10004,...,10006}
+        atom[921]=10008
+        atom[922,...,924] = {10023,...,10025}
+        atom[925]=10027
+        atom[926,...,928] = {10044,...,10046}
+        atom[929]=10048
+        atom[930,...,932] = {10051,...,10053}
+        atom[933]=10055
+        atom[934,...,936] = {10065,...,10067}
+        atom[937]=10069
+        atom[938,...,940] = {10081,...,10083}
+        atom[941]=10085
+        atom[942,...,944] = {10101,...,10103}
+        atom[945]=10105
+        atom[946,...,948] = {10118,...,10120}
+        atom[949]=10122
+        atom[950]=10125
+     weight: not available
+     pbcatom                        = 9538
+   pull-group 6:
+     atom (4):
+        atom[0,...,3] = {109984,...,109987}
+     weight: not available
+     pbcatom                        = 109985
+   pull-group 7:
+     atom (951):
+        atom[0]=10128
+        atom[1]=10132
+        atom[2,...,4] = {10135,...,10137}
+        atom[5]=10139
+        atom[6,...,8] = {10145,...,10147}
+        atom[9]=10149
+        atom[10,...,12] = {10152,...,10154}
+        atom[13]=10156
+        atom[14,...,16] = {10168,...,10170}
+        atom[17]=10172
+        atom[18,...,20] = {10178,...,10180}
+        atom[21]=10182
+        atom[22,...,24] = {10198,...,10200}
+        atom[25]=10202
+        atom[26,...,28] = {10205,...,10207}
+        atom[29]=10209
+        atom[30,...,32] = {10216,...,10218}
+        atom[33]=10220
+        atom[34,...,36] = {10236,...,10238}
+        atom[37]=10240
+        atom[38,...,40] = {10248,...,10250}
+        atom[41]=10252
+        atom[42,...,44] = {10260,...,10262}
+        atom[45]=10264
+        atom[46,...,48] = {10271,...,10273}
+        atom[49]=10275
+        atom[50,...,52] = {10291,...,10293}
+        atom[53]=10295
+        atom[54,...,56] = {10302,...,10304}
+        atom[57]=10306
+        atom[58,...,60] = {10321,...,10323}
+        atom[61]=10325
+        atom[62,...,64] = {10331,...,10333}
+        atom[65]=10335
+        atom[66,...,68] = {10342,...,10344}
+        atom[69]=10346
+        atom[70,...,72] = {10361,...,10363}
+        atom[73]=10365
+        atom[74,...,76] = {10385,...,10387}
+        atom[77]=10389
+        atom[78,...,80] = {10395,...,10397}
+        atom[81]=10399
+        atom[82,...,84] = {10416,...,10418}
+        atom[85]=10420
+        atom[86,...,88] = {10435,...,10437}
+        atom[89]=10439
+        atom[90,...,92] = {10445,...,10447}
+        atom[93]=10449
+        atom[94,...,96] = {10460,...,10462}
+        atom[97]=10464
+        atom[98,...,100] = {10480,...,10482}
+        atom[101]=10484
+        atom[102,...,104] = {10499,...,10501}
+        atom[105]=10503
+        atom[106,...,108] = {10510,...,10512}
+        atom[109]=10514
+        atom[110,...,112] = {10524,...,10526}
+        atom[113]=10528
+        atom[114,...,116] = {10543,...,10545}
+        atom[117]=10547
+        atom[118,...,120] = {10562,...,10564}
+        atom[121]=10566
+        atom[122,...,124] = {10582,...,10584}
+        atom[125]=10586
+        atom[126,...,128] = {10598,...,10600}
+        atom[129]=10602
+        atom[130,...,132] = {10618,...,10620}
+        atom[133]=10622
+        atom[134,...,136] = {10628,...,10630}
+        atom[137]=10632
+        atom[138,...,140] = {10635,...,10637}
+        atom[141]=10639
+        atom[142,...,144] = {10651,...,10653}
+        atom[145]=10655
+        atom[146,...,148] = {10658,...,10660}
+        atom[149]=10662
+        atom[150,...,152] = {10669,...,10671}
+        atom[153]=10673
+        atom[154,...,156] = {10679,...,10681}
+        atom[157]=10683
+        atom[158,...,160] = {10698,...,10700}
+        atom[161]=10702
+        atom[162,...,164] = {10708,...,10710}
+        atom[165]=10712
+        atom[166,...,168] = {10729,...,10731}
+        atom[169]=10733
+        atom[170,...,172] = {10739,...,10741}
+        atom[173]=10743
+        atom[174,...,176] = {10761,...,10763}
+        atom[177]=10765
+        atom[178,...,180] = {10780,...,10782}
+        atom[181]=10784
+        atom[182,...,184] = {10794,...,10796}
+        atom[185]=10798
+        atom[186,...,188] = {10805,...,10807}
+        atom[189]=10809
+        atom[190,...,192] = {10817,...,10819}
+        atom[193]=10821
+        atom[194,...,196] = {10827,...,10829}
+        atom[197]=10831
+        atom[198,...,200] = {10837,...,10839}
+        atom[201]=10841
+        atom[202,...,204] = {10856,...,10858}
+        atom[205]=10860
+        atom[206,...,208] = {10868,...,10870}
+        atom[209]=10872
+        atom[210,...,212] = {10882,...,10884}
+        atom[213]=10888
+        atom[214,...,216] = {10896,...,10898}
+        atom[217]=10900
+        atom[218,...,220] = {10903,...,10905}
+        atom[221]=10907
+        atom[222,...,224] = {10922,...,10924}
+        atom[225]=10926
+        atom[226,...,228] = {10938,...,10940}
+        atom[229]=10942
+        atom[230,...,232] = {10948,...,10950}
+        atom[233]=10952
+        atom[234,...,236] = {10967,...,10969}
+        atom[237]=10971
+        atom[238,...,240] = {10977,...,10979}
+        atom[241]=10981
+        atom[242,...,244] = {10993,...,10995}
+        atom[245]=10997
+        atom[246,...,248] = {11004,...,11006}
+        atom[249]=11008
+        atom[250,...,252] = {11021,...,11023}
+        atom[253]=11025
+        atom[254,...,256] = {11028,...,11030}
+        atom[257]=11032
+        atom[258,...,260] = {11048,...,11050}
+        atom[261]=11052
+        atom[262,...,264] = {11058,...,11060}
+        atom[265]=11062
+        atom[266,...,268] = {11077,...,11079}
+        atom[269]=11081
+        atom[270,...,272] = {11097,...,11099}
+        atom[273]=11101
+        atom[274,...,276] = {11113,...,11115}
+        atom[277]=11117
+        atom[278,...,280] = {11123,...,11125}
+        atom[281]=11127
+        atom[282,...,284] = {11139,...,11141}
+        atom[285]=11143
+        atom[286,...,288] = {11149,...,11151}
+        atom[289]=11153
+        atom[290,...,292] = {11168,...,11170}
+        atom[293]=11172
+        atom[294,...,296] = {11175,...,11177}
+        atom[297]=11179
+        atom[298,...,300] = {11185,...,11187}
+        atom[301]=11189
+        atom[302,...,304] = {11199,...,11201}
+        atom[305]=11203
+        atom[306,...,308] = {11218,...,11220}
+        atom[309]=11222
+        atom[310,...,312] = {11229,...,11231}
+        atom[313]=11233
+        atom[314,...,316] = {11236,...,11238}
+        atom[317]=11240
+        atom[318,...,320] = {11243,...,11245}
+        atom[321]=11247
+        atom[322,...,324] = {11260,...,11262}
+        atom[325]=11264
+        atom[326,...,328] = {11276,...,11278}
+        atom[329]=11280
+        atom[330,...,332] = {11290,...,11292}
+        atom[333]=11296
+        atom[334,...,336] = {11304,...,11306}
+        atom[337]=11308
+        atom[338,...,340] = {11314,...,11316}
+        atom[341]=11318
+        atom[342,...,344] = {11330,...,11332}
+        atom[345]=11334
+        atom[346,...,348] = {11344,...,11346}
+        atom[349]=11348
+        atom[350,...,352] = {11364,...,11366}
+        atom[353]=11368
+        atom[354,...,356] = {11371,...,11373}
+        atom[357]=11375
+        atom[358,...,360] = {11390,...,11392}
+        atom[361]=11394
+        atom[362,...,364] = {11400,...,11402}
+        atom[365]=11404
+        atom[366,...,368] = {11416,...,11418}
+        atom[369]=11420
+        atom[370,...,372] = {11423,...,11425}
+        atom[373]=11427
+        atom[374,...,376] = {11430,...,11432}
+        atom[377]=11434
+        atom[378,...,380] = {11447,...,11449}
+        atom[381]=11451
+        atom[382,...,384] = {11466,...,11468}
+        atom[385]=11470
+        atom[386,...,388] = {11480,...,11482}
+        atom[389]=11484
+        atom[390,...,392] = {11496,...,11498}
+        atom[393]=11500
+        atom[394,...,396] = {11515,...,11517}
+        atom[397]=11519
+        atom[398,...,400] = {11529,...,11531}
+        atom[401]=11533
+        atom[402,...,404] = {11536,...,11538}
+        atom[405]=11540
+        atom[406,...,408] = {11552,...,11554}
+        atom[409]=11556
+        atom[410,...,412] = {11572,...,11574}
+        atom[413]=11576
+        atom[414,...,416] = {11593,...,11595}
+        atom[417]=11597
+        atom[418,...,420] = {11617,...,11619}
+        atom[421]=11621
+        atom[422,...,424] = {11636,...,11638}
+        atom[425]=11640
+        atom[426,...,428] = {11646,...,11648}
+        atom[429]=11650
+        atom[430,...,432] = {11663,...,11665}
+        atom[433]=11667
+        atom[434,...,436] = {11682,...,11684}
+        atom[437]=11686
+        atom[438,...,440] = {11701,...,11703}
+        atom[441]=11705
+        atom[442,...,444] = {11708,...,11710}
+        atom[445]=11712
+        atom[446,...,448] = {11719,...,11721}
+        atom[449]=11723
+        atom[450,...,452] = {11733,...,11735}
+        atom[453]=11737
+        atom[454,...,456] = {11743,...,11745}
+        atom[457]=11747
+        atom[458,...,460] = {11753,...,11755}
+        atom[461]=11757
+        atom[462,...,464] = {11764,...,11766}
+        atom[465]=11768
+        atom[466,...,468] = {11784,...,11786}
+        atom[469]=11788
+        atom[470,...,472] = {11803,...,11805}
+        atom[473]=11807
+        atom[474,...,476] = {11822,...,11824}
+        atom[477]=11826
+        atom[478,...,480] = {11844,...,11846}
+        atom[481]=11848
+        atom[482,...,484] = {11865,...,11867}
+        atom[485]=11869
+        atom[486,...,488] = {11881,...,11883}
+        atom[489]=11885
+        atom[490,...,492] = {11895,...,11897}
+        atom[493]=11899
+        atom[494,...,496] = {11902,...,11904}
+        atom[497]=11906
+        atom[498,...,500] = {11909,...,11911}
+        atom[501]=11913
+        atom[502,...,504] = {11928,...,11930}
+        atom[505]=11932
+        atom[506,...,508] = {11938,...,11940}
+        atom[509]=11942
+        atom[510,...,512] = {11954,...,11956}
+        atom[513]=11960
+        atom[514,...,516] = {11968,...,11970}
+        atom[517]=11972
+        atom[518,...,520] = {11982,...,11984}
+        atom[521]=11986
+        atom[522,...,524] = {11999,...,12001}
+        atom[525]=12003
+        atom[526,...,528] = {12010,...,12012}
+        atom[529]=12014
+        atom[530,...,532] = {12026,...,12028}
+        atom[533]=12030
+        atom[534,...,536] = {12036,...,12038}
+        atom[537]=12040
+        atom[538,...,540] = {12046,...,12048}
+        atom[541]=12050
+        atom[542,...,544] = {12053,...,12055}
+        atom[545]=12057
+        atom[546,...,548] = {12072,...,12074}
+        atom[549]=12076
+        atom[550,...,552] = {12079,...,12081}
+        atom[553]=12083
+        atom[554,...,556] = {12090,...,12092}
+        atom[557]=12094
+        atom[558,...,560] = {12109,...,12111}
+        atom[561]=12113
+        atom[562,...,564] = {12124,...,12126}
+        atom[565]=12128
+        atom[566,...,568] = {12131,...,12133}
+        atom[569]=12135
+        atom[570,...,572] = {12147,...,12149}
+        atom[573]=12151
+        atom[574,...,576] = {12163,...,12165}
+        atom[577]=12167
+        atom[578,...,580] = {12180,...,12182}
+        atom[581]=12184
+        atom[582,...,584] = {12195,...,12197}
+        atom[585]=12199
+        atom[586,...,588] = {12214,...,12216}
+        atom[589]=12218
+        atom[590,...,592] = {12233,...,12235}
+        atom[593]=12237
+        atom[594,...,596] = {12252,...,12254}
+        atom[597]=12256
+        atom[598,...,600] = {12266,...,12268}
+        atom[601]=12270
+        atom[602,...,604] = {12286,...,12288}
+        atom[605]=12290
+        atom[606,...,608] = {12296,...,12298}
+        atom[609]=12300
+        atom[610,...,612] = {12315,...,12317}
+        atom[613]=12319
+        atom[614,...,616] = {12331,...,12333}
+        atom[617]=12335
+        atom[618,...,620] = {12352,...,12354}
+        atom[621]=12356
+        atom[622,...,624] = {12366,...,12368}
+        atom[625]=12370
+        atom[626,...,628] = {12382,...,12384}
+        atom[629]=12386
+        atom[630,...,632] = {12403,...,12405}
+        atom[633]=12407
+        atom[634,...,636] = {12413,...,12415}
+        atom[637]=12417
+        atom[638,...,640] = {12427,...,12429}
+        atom[641]=12431
+        atom[642,...,644] = {12437,...,12439}
+        atom[645]=12441
+        atom[646,...,648] = {12447,...,12449}
+        atom[649]=12451
+        atom[650,...,652] = {12459,...,12461}
+        atom[653]=12465
+        atom[654,...,656] = {12473,...,12475}
+        atom[657]=12477
+        atom[658,...,660] = {12495,...,12497}
+        atom[661]=12499
+        atom[662,...,664] = {12517,...,12519}
+        atom[665]=12521
+        atom[666,...,668] = {12524,...,12526}
+        atom[669]=12528
+        atom[670,...,672] = {12535,...,12537}
+        atom[673]=12539
+        atom[674,...,676] = {12554,...,12556}
+        atom[677]=12558
+        atom[678,...,680] = {12561,...,12563}
+        atom[681]=12565
+        atom[682,...,684] = {12575,...,12577}
+        atom[685]=12579
+        atom[686,...,688] = {12594,...,12596}
+        atom[689]=12598
+        atom[690,...,692] = {12604,...,12606}
+        atom[693]=12610
+        atom[694,...,696] = {12618,...,12620}
+        atom[697]=12622
+        atom[698,...,700] = {12637,...,12639}
+        atom[701]=12641
+        atom[702,...,704] = {12647,...,12649}
+        atom[705]=12651
+        atom[706,...,708] = {12666,...,12668}
+        atom[709]=12670
+        atom[710,...,712] = {12673,...,12675}
+        atom[713]=12677
+        atom[714,...,716] = {12692,...,12694}
+        atom[717]=12696
+        atom[718,...,720] = {12711,...,12713}
+        atom[721]=12715
+        atom[722,...,724] = {12727,...,12729}
+        atom[725]=12731
+        atom[726,...,728] = {12734,...,12736}
+        atom[729]=12738
+        atom[730,...,732] = {12744,...,12746}
+        atom[733]=12748
+        atom[734,...,736] = {12758,...,12760}
+        atom[737]=12762
+        atom[738,...,740] = {12777,...,12779}
+        atom[741]=12781
+        atom[742,...,744] = {12796,...,12798}
+        atom[745]=12800
+        atom[746,...,748] = {12806,...,12808}
+        atom[749]=12810
+        atom[750,...,752] = {12816,...,12818}
+        atom[753]=12820
+        atom[754,...,756] = {12823,...,12825}
+        atom[757]=12829
+        atom[758,...,760] = {12837,...,12839}
+        atom[761]=12841
+        atom[762,...,764] = {12857,...,12859}
+        atom[765]=12861
+        atom[766,...,768] = {12868,...,12870}
+        atom[769]=12872
+        atom[770,...,772] = {12875,...,12877}
+        atom[773]=12879
+        atom[774,...,776] = {12882,...,12884}
+        atom[777]=12886
+        atom[778,...,780] = {12893,...,12895}
+        atom[781]=12897
+        atom[782,...,784] = {12910,...,12912}
+        atom[785]=12914
+        atom[786,...,788] = {12924,...,12926}
+        atom[789]=12930
+        atom[790,...,792] = {12938,...,12940}
+        atom[793]=12942
+        atom[794,...,796] = {12948,...,12950}
+        atom[797]=12952
+        atom[798,...,800] = {12972,...,12974}
+        atom[801]=12976
+        atom[802,...,804] = {12983,...,12985}
+        atom[805]=12987
+        atom[806,...,808] = {13003,...,13005}
+        atom[809]=13007
+        atom[810,...,812] = {13010,...,13012}
+        atom[813]=13016
+        atom[814,...,816] = {13024,...,13026}
+        atom[817]=13028
+        atom[818,...,820] = {13034,...,13036}
+        atom[821]=13038
+        atom[822,...,824] = {13050,...,13052}
+        atom[825]=13054
+        atom[826,...,828] = {13060,...,13062}
+        atom[829]=13064
+        atom[830,...,832] = {13070,...,13072}
+        atom[833]=13074
+        atom[834,...,836] = {13077,...,13079}
+        atom[837]=13081
+        atom[838,...,840] = {13089,...,13091}
+        atom[841]=13093
+        atom[842,...,844] = {13109,...,13111}
+        atom[845]=13113
+        atom[846,...,848] = {13120,...,13122}
+        atom[849]=13124
+        atom[850,...,852] = {13127,...,13129}
+        atom[853]=13131
+        atom[854,...,856] = {13144,...,13146}
+        atom[857]=13148
+        atom[858,...,860] = {13168,...,13170}
+        atom[861]=13172
+        atom[862,...,864] = {13184,...,13186}
+        atom[865]=13188
+        atom[866,...,868] = {13205,...,13207}
+        atom[869]=13209
+        atom[870,...,872] = {13229,...,13231}
+        atom[873]=13233
+        atom[874,...,876] = {13245,...,13247}
+        atom[877]=13249
+        atom[878,...,880] = {13252,...,13254}
+        atom[881]=13258
+        atom[882,...,884] = {13266,...,13268}
+        atom[885]=13270
+        atom[886,...,888] = {13285,...,13287}
+        atom[889]=13289
+        atom[890,...,892] = {13304,...,13306}
+        atom[893]=13308
+        atom[894,...,896] = {13311,...,13313}
+        atom[897]=13315
+        atom[898,...,900] = {13318,...,13320}
+        atom[901]=13322
+        atom[902,...,904] = {13325,...,13327}
+        atom[905]=13329
+        atom[906,...,908] = {13344,...,13346}
+        atom[909]=13348
+        atom[910,...,912] = {13354,...,13356}
+        atom[913]=13358
+        atom[914,...,916] = {13361,...,13363}
+        atom[917]=13365
+        atom[918,...,920] = {13380,...,13382}
+        atom[921]=13384
+        atom[922,...,924] = {13399,...,13401}
+        atom[925]=13403
+        atom[926,...,928] = {13420,...,13422}
+        atom[929]=13424
+        atom[930,...,932] = {13427,...,13429}
+        atom[933]=13431
+        atom[934,...,936] = {13441,...,13443}
+        atom[937]=13445
+        atom[938,...,940] = {13457,...,13459}
+        atom[941]=13461
+        atom[942,...,944] = {13477,...,13479}
+        atom[945]=13481
+        atom[946,...,948] = {13494,...,13496}
+        atom[949]=13498
+        atom[950]=13501
+     weight: not available
+     pbcatom                        = 12914
+   pull-group 8:
+     atom (4):
+        atom[0,...,3] = {109988,...,109991}
+     weight: not available
+     pbcatom                        = 109989
+   pull-ncoords                   = 4
+   pull-coord 0:
+   type                           = external-potential
+   potential-provider             = AWH
+   geometry                       = direction
+   group[0]                       = 1
+   group[1]                       = 2
+   dim (3):
+      dim[0]=0
+      dim[1]=0
+      dim[2]=1
+   origin (3):
+      origin[0]= 0.00000e+00
+      origin[1]= 0.00000e+00
+      origin[2]= 0.00000e+00
+   vec (3):
+      vec[0]= 0.00000e+00
+      vec[1]= 0.00000e+00
+      vec[2]= 1.00000e+00
+   start                          = true
+   init                           = 0.504696
+   rate                           = 0
+   k                              = 0
+   kB                             = 0
+   pull-coord 1:
+   type                           = external-potential
+   potential-provider             = AWH
+   geometry                       = direction
+   group[0]                       = 3
+   group[1]                       = 4
+   dim (3):
+      dim[0]=0
+      dim[1]=0
+      dim[2]=1
+   origin (3):
+      origin[0]= 0.00000e+00
+      origin[1]= 0.00000e+00
+      origin[2]= 0.00000e+00
+   vec (3):
+      vec[0]= 0.00000e+00
+      vec[1]= 0.00000e+00
+      vec[2]= 1.00000e+00
+   start                          = true
+   init                           = -0.00715257
+   rate                           = 0
+   k                              = 0
+   kB                             = 0
+   pull-coord 2:
+   type                           = external-potential
+   potential-provider             = AWH
+   geometry                       = direction
+   group[0]                       = 5
+   group[1]                       = 6
+   dim (3):
+      dim[0]=0
+      dim[1]=0
+      dim[2]=1
+   origin (3):
+      origin[0]= 0.00000e+00
+      origin[1]= 0.00000e+00
+      origin[2]= 0.00000e+00
+   vec (3):
+      vec[0]= 0.00000e+00
+      vec[1]= 0.00000e+00
+      vec[2]= 1.00000e+00
+   start                          = true
+   init                           = 0.483926
+   rate                           = 0
+   k                              = 0
+   kB                             = 0
+   pull-coord 3:
+   type                           = external-potential
+   potential-provider             = AWH
+   geometry                       = direction
+   group[0]                       = 7
+   group[1]                       = 8
+   dim (3):
+      dim[0]=0
+      dim[1]=0
+      dim[2]=1
+   origin (3):
+      origin[0]= 0.00000e+00
+      origin[1]= 0.00000e+00
+      origin[2]= 0.00000e+00
+   vec (3):
+      vec[0]= 0.00000e+00
+      vec[1]= 0.00000e+00
+      vec[2]= 1.00000e+00
+   start                          = true
+   init                           = 0.779216
+   rate                           = 0
+   k                              = 0
+   kB                             = 0
+   awh                            = true
+   awh-potential                  = convolved
+   awh-seed                       = -1048956038
+   awh-nstout                     = 2000000
+   awh-nstsample                  = 10
+   awh-nsamples-update            = 100
+   awh-share-bias-multisim        = true
+   awh-nbias                      = 4
+   awh1-error-init                = 3
+   awh1-growth                    = exp-linear
+   awh1-target                    = constant
+   awh1-target-beta-scalng        = 0
+   awh1-target-cutoff             = 0
+   awh1-user-data                 = false
+   awh1-share-group               = 1
+   awh1-equilibrate-histogram     = false
+   awh1-ndim                      = 1
+   awh1-dim1:
+    coord-provider                 = pull
+    coord-index                    = 1
+    start                          = -2
+    end                            = 2
+    period                         = 0
+    force-constant                 = 1000
+    diffusion                      = 0.0001
+    cover-diameter                 = 0
+   awh2-error-init                = 3
+   awh2-growth                    = exp-linear
+   awh2-target                    = constant
+   awh2-target-beta-scalng        = 0
+   awh2-target-cutoff             = 0
+   awh2-user-data                 = false
+   awh2-share-group               = 2
+   awh2-equilibrate-histogram     = false
+   awh2-ndim                      = 1
+   awh2-dim1:
+    coord-provider                 = pull
+    coord-index                    = 2
+    start                          = -2
+    end                            = 2
+    period                         = 0
+    force-constant                 = 1000
+    diffusion                      = 0.0001
+    cover-diameter                 = 0
+   awh3-error-init                = 3
+   awh3-growth                    = exp-linear
+   awh3-target                    = constant
+   awh3-target-beta-scalng        = 0
+   awh3-target-cutoff             = 0
+   awh3-user-data                 = false
+   awh3-share-group               = 3
+   awh3-equilibrate-histogram     = false
+   awh3-ndim                      = 1
+   awh3-dim1:
+    coord-provider                 = pull
+    coord-index                    = 3
+    start                          = -2
+    end                            = 2
+    period                         = 0
+    force-constant                 = 1000
+    diffusion                      = 0.0001
+    cover-diameter                 = 0
+   awh4-error-init                = 3
+   awh4-growth                    = exp-linear
+   awh4-target                    = constant
+   awh4-target-beta-scalng        = 0
+   awh4-target-cutoff             = 0
+   awh4-user-data                 = false
+   awh4-share-group               = 4
+   awh4-equilibrate-histogram     = false
+   awh4-ndim                      = 1
+   awh4-dim1:
+    coord-provider                 = pull
+    coord-index                    = 4
+    start                          = -2
+    end                            = 2
+    period                         = 0
+    force-constant                 = 1000
+    diffusion                      = 0.0001
+    cover-diameter                 = 0
+   rotation                       = false
+   interactiveMD                  = false
+   disre                          = No
+   disre-weighting                = Conservative
+   disre-mixed                    = false
+   dr-fc                          = 1000
+   dr-tau                         = 0
+   nstdisreout                    = 100
+   orire-fc                       = 0
+   orire-tau                      = 0
+   nstorireout                    = 100
+   free-energy                    = no
+   cos-acceleration               = 0
+   deform (3x3):
+      deform[    0]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      deform[    1]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      deform[    2]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+   simulated-tempering            = false
+   swapcoords                     = no
+   userint1                       = 0
+   userint2                       = 0
+   userint3                       = 0
+   userint4                       = 0
+   userreal1                      = 0
+   userreal2                      = 0
+   userreal3                      = 0
+   userreal4                      = 0
+   applied-forces:
+     electric-field:
+       x:
+         E0                       = 0
+         omega                    = 0
+         t0                       = 0
+         sigma                    = 0
+       y:
+         E0                       = 0
+         omega                    = 0
+         t0                       = 0
+         sigma                    = 0
+       z:
+         E0                       = 0
+         omega                    = 0
+         t0                       = 0
+         sigma                    = 0
+     density-guided-simulation:
+       active                     = false
+       group                      = protein
+       similarity-measure         = inner-product
+       atom-spreading-weight      = unity
+       force-constant             = 1e+09
+       gaussian-transform-spreading-width = 0.2
+       gaussian-transform-spreading-range-in-multiples-of-width = 4
+       reference-density-filename = reference.mrc
+       nst                        = 1
+       normalize-densities        = true
+       adaptive-force-scaling     = false
+       adaptive-force-scaling-time-constant = 4
+       shift-vector               = 
+       transformation-matrix      = 
+     qmmm-cp2k:
+       active                     = false
+       qmgroup                    = System
+       qmmethod                   = PBE
+       qmfilenames                = 
+       qmcharge                   = 0
+       qmmultiplicity             = 1
+grpopts:
+   nrdf:     33723.1     80637.9      125565
+   ref-t:         310         310         310
+   tau-t:           1           1           1
+annealing:          No          No          No
+annealing-npoints:           0           0           0
+   acc:	           0           0           0
+   nfreeze:           N           N           N
+   energygrp-flags[  0]: 0
+
+The -nsteps functionality is deprecated, and may be removed in a future version. Consider using gmx convert-tpr -nsteps or changing the appropriate .mdp file field.
+
+Overriding nsteps with value passed on the command line: -1 steps
+Changing nstlist from 40 to 100, rlist from 1.2 to 1.287
+
+
+When checking whether update groups are usable:
+  Domain decomposition is not active, so there is no need for update groups
+
+NOTE: SYCL GPU support in GROMACS, and the compilers, libraries,
+and drivers that it depends on are fairly new.
+Please, pay extra attention to the correctness of your results,
+and update to the latest GROMACS patch version if warranted.
+
+1 GPU selected for this run.
+Mapping of GPU IDs to the 1 GPU task in the 1 rank on this node:
+  PP:0
+PP tasks will do (non-perturbed) short-ranged interactions on the GPU
+PP task will update and constrain coordinates on the CPU
+Using 1 MPI process
+
+Non-default thread affinity set, disabling internal thread affinity
+
+Using 7 OpenMP threads 
+
+System total charge: 0.000
+Will do PME sum in reciprocal space for electrostatic interactions.
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+U. Essmann, L. Perera, M. L. Berkowitz, T. Darden, H. Lee and L. G. Pedersen 
+A smooth particle mesh Ewald method
+J. Chem. Phys. 103 (1995) pp. 8577-8592
+-------- -------- --- Thank You --- -------- --------
+
+Using a Gaussian width (1/beta) of 0.34693 nm for Ewald
+Potential shift: LJ r^-12: -2.648e-01 r^-6: -5.349e-01, Ewald -8.333e-07
+Initialized non-bonded Coulomb Ewald tables, spacing: 9.71e-04 size: 1237
+
+Generated table with 1143 data points for 1-4 COUL.
+Tabscale = 500 points/nm
+Generated table with 1143 data points for 1-4 LJ6.
+Tabscale = 500 points/nm
+Generated table with 1143 data points for 1-4 LJ12.
+Tabscale = 500 points/nm
+
+
+Using GPU 8x8 nonbonded short-range kernels
+
+Using a dual 8x8 pair-list setup updated with dynamic, rolling pruning:
+  outer list: updated every 100 steps, buffer 0.087 nm, rlist 1.287 nm
+  inner list: updated every  60 steps, buffer 0.002 nm, rlist 1.202 nm
+At tolerance 0.005 kJ/mol/ps per atom, equivalent classical 1x1 list would be:
+  outer list: updated every 100 steps, buffer 0.258 nm, rlist 1.458 nm
+  inner list: updated every  60 steps, buffer 0.153 nm, rlist 1.353 nm
+
+The non-bonded pair calculation algorithm tolerates a few missing pair interactions close to the cut-off. This can lead to a systematic overestimation of the pressure due to missing LJ interactions. The error in the average pressure due to missing LJ interactions is at most 13.01 bar.
+The pressure error can be controlled by setting the environment variable GMX_VERLET_BUFFER_PRESSURE_TOLERANCE to the allowed error in units of bar.
+Removing pbc first time
+
+Will apply potential COM pulling
+with 4 pull coordinates and 8 groups
+Pull group 1:   951 atoms, mass 12842.660
+Pull group 2:     4 atoms, mass    17.031
+Pull group 3:   951 atoms, mass 12842.660
+Pull group 4:     4 atoms, mass    17.031
+Pull group 5:   951 atoms, mass 12842.660
+Pull group 6:     4 atoms, mass    17.031
+Pull group 7:   951 atoms, mass 12842.660
+Pull group 8:     4 atoms, mass    17.031
+
+Initializing LINear Constraint Solver
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+B. Hess and H. Bekker and H. J. C. Berendsen and J. G. E. M. Fraaije
+LINCS: A Linear Constraint Solver for molecular simulations
+J. Comp. Chem. 18 (1997) pp. 1463-1472
+-------- -------- --- Thank You --- -------- --------
+
+The number of constraints is 27464
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+S. Miyamoto and P. A. Kollman
+SETTLE: An Analytical Version of the SHAKE and RATTLE Algorithms for Rigid
+Water Models
+J. Comp. Chem. 13 (1992) pp. 952-962
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+G. Bussi, D. Donadio and M. Parrinello
+Canonical sampling through velocity rescaling
+J. Chem. Phys. 126 (2007) pp. 014101
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+M. Bernetti, G. Bussi
+Pressure control using stochastic cell rescaling
+J. Chem. Phys. 153 (2020) pp. 114107
+-------- -------- --- Thank You --- -------- --------
+
+There are: 109992 Atoms
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+V. Lindahl, J. Lidmar, B. Hess
+Accelerated weight histogram method for exploring free energy landscapes
+J. Chem. Phys. 141 (2014) pp. 044110
+-------- -------- --- Thank You --- -------- --------
+
+
+awh1: initial force correlation block length = 0.025 ps
+awh1: force correlation number of blocks = 64
+awh2: initial force correlation block length = 0.025 ps
+awh2: force correlation number of blocks = 64
+awh3: initial force correlation block length = 0.025 ps
+awh3: force correlation number of blocks = 64
+awh4: initial force correlation block length = 0.025 ps
+awh4: force correlation number of blocks = 64
+Constraining the starting coordinates (step 0)
+
+Constraining the coordinates at t0-dt (step 0)
+Center of mass motion removal mode is Linear
+We have the following groups for center of mass motion removal:
+  0:  Protein_POPC
+  1:  AMM_Water_and_ions
+RMS relative constraint deviation after constraining: 6.33e-06
+Initial temperature: 310.812 K
+
+Started mdrun on rank 0 Wed Jan 10 12:12:40 2024
+
+
+The -resethway functionality is deprecated, and may be removed in a future version.
+           Step           Time
+              0        0.00000
+
+   Energies (kJ/mol)
+           Bond            U-B    Proper Dih.  Improper Dih.      CMAP Dih.
+    2.69146e+04    1.15684e+05    8.89529e+04    2.45482e+03   -1.48959e+03
+          LJ-14     Coulomb-14        LJ (SR)   Coulomb (SR)   Coul. recip.
+    2.08505e+04    1.24637e+05    3.76780e+03   -1.25758e+06    7.82372e+03
+   COM Pull En.      Potential    Kinetic En.   Total Energy  Conserved En.
+    3.56766e+01   -8.67947e+05    3.09921e+05   -5.58026e+05   -5.58026e+05
+    Temperature Pressure (bar)   Constr. rmsd
+    3.10720e+02   -1.25601e+02    6.27887e-06
+
+
+step 35191: resetting all time and cycle counters
+Restarted time on rank 0 Wed Jan 10 12:15:38 2024
+
+
+Step 70400: Run time exceeded 0.099 hours, will terminate the run within 100 steps
+           Step           Time
+          70500      176.25000
+
+Writing checkpoint, step 70500 at Wed Jan 10 12:18:37 2024
+
+
+   Energies (kJ/mol)
+           Bond            U-B    Proper Dih.  Improper Dih.      CMAP Dih.
+    2.63082e+04    1.15616e+05    8.84474e+04    2.47199e+03   -1.53406e+03
+          LJ-14     Coulomb-14        LJ (SR)   Coulomb (SR)   Coul. recip.
+    2.05984e+04    1.24484e+05    5.69504e+03   -1.26038e+06    7.88284e+03
+   COM Pull En.      Potential    Kinetic En.   Total Energy  Conserved En.
+    3.54676e+01   -8.70378e+05    3.08839e+05   -5.61538e+05   -5.38893e+05
+    Temperature Pressure (bar)   Constr. rmsd
+    3.09636e+02   -2.68270e+02    6.10557e-06
+
+
+Energy conservation over simulation part #1 of length 176.25 ps, time 0 to 176.25 ps
+  Conserved energy drift: 9.87e-04 kJ/mol/ps per atom
+
+
+	<======  ###############  ==>
+	<====  A V E R A G E S  ====>
+	<==  ###############  ======>
+
+	Statistics over 70501 steps using 353 frames
+
+   Energies (kJ/mol)
+           Bond            U-B    Proper Dih.  Improper Dih.      CMAP Dih.
+    2.64059e+04    1.15983e+05    8.86989e+04    2.49058e+03   -1.44536e+03
+          LJ-14     Coulomb-14        LJ (SR)   Coulomb (SR)   Coul. recip.
+    2.08548e+04    1.23948e+05    4.91286e+03   -1.25915e+06    7.74882e+03
+   COM Pull En.      Potential    Kinetic En.   Total Energy  Conserved En.
+    3.55657e+01   -8.69512e+05    3.09057e+05   -5.60455e+05   -5.48056e+05
+    Temperature Pressure (bar)   Constr. rmsd
+    3.09854e+02    2.49047e+01    0.00000e+00
+
+          Box-X          Box-Y          Box-Z
+    1.16141e+01    1.00581e+01    9.12495e+00
+
+   Total Virial (kJ/mol)
+    1.01426e+05   -1.66499e+02    4.26494e+01
+   -1.66155e+02    1.01582e+05    4.31008e+02
+    4.30887e+01    4.31092e+02    1.03657e+05
+
+   Pressure (bar)
+    2.04139e+01    7.39170e+00   -1.33181e+00
+    7.38097e+00    1.33145e+01   -7.96599e+00
+   -1.34550e+00   -7.96862e+00    4.09858e+01
+
+      T-Protein         T-POPCT-AMM_Water_and_ions
+    3.10152e+02    3.10527e+02    3.09342e+02
+
+
+	M E G A - F L O P S   A C C O U N T I N G
+
+ NB=Group-cutoff nonbonded kernels    NxN=N-by-N cluster Verlet kernels
+ RF=Reaction-Field  VdW=Van der Waals  QSTab=quadratic-spline table
+ W3=SPC/TIP3p  W4=TIP4p (single or pairs)
+ V&F=Potential and force  V=Potential only  F=Force only
+
+ Computing:                               M-Number         M-Flops  % Flops
+-----------------------------------------------------------------------------
+ Pair Search distance check            4597.389440       41376.505     0.0
+ NxN QSTab Elec. + LJ [F]           4698861.181184   249039642.603    95.2
+ NxN QSTab Elec. + LJ [V&F]           23806.872192     1928356.648     0.7
+ 1,4 nonbonded interactions            4416.151080      397453.597     0.2
+ Calc Weights                         11651.452560      419452.292     0.2
+ Spread Q Bspline                    248564.321280      497128.643     0.2
+ Gather F Bspline                    248564.321280     1491385.928     0.6
+ 3D-FFT                              680036.914260     5440295.314     2.1
+ Solve PME                              249.147360       15945.431     0.0
+ Shift-X                                 38.937168         233.623     0.0
+ Bonds                                  696.878160       41115.811     0.0
+ Propers                               5094.950520     1166743.669     0.4
+ Impropers                               92.512200       19242.538     0.0
+ Virial                                 194.325342        3497.856     0.0
+ Stop-CM                                 19.468584         194.686     0.0
+ P-Coupling                             194.245872        1165.475     0.0
+ Calc-Ekin                              776.763504       20972.615     0.0
+ Lincs                                  969.753840       58185.230     0.0
+ Lincs-Mat                             6364.274400       25457.098     0.0
+ Constraint-V                          4149.207480       37342.867     0.0
+ Constraint-Vir                         159.017704        3816.425     0.0
+ Settle                                 736.566600      272529.642     0.1
+ CMAP                                    33.332640       56665.488     0.0
+ Urey-Bradley                          3151.346880      576696.479     0.2
+-----------------------------------------------------------------------------
+ Total                                               261554896.462   100.0
+-----------------------------------------------------------------------------
+
+
+      R E A L   C Y C L E   A N D   T I M E   A C C O U N T I N G
+
+On 1 MPI rank, each using 7 OpenMP threads
+
+ Activity:              Num   Num      Call    Wall time         Giga-Cycles
+                        Ranks Threads  Count      (s)         total sum    %
+--------------------------------------------------------------------------------
+ Neighbor search           1    7        354       2.660         37.172   1.5
+ Launch PP GPU ops.        1    7      35310       1.207         16.870   0.7
+ Force                     1    7      35310      40.457        565.301  22.6
+ PME mesh                  1    7      35310      79.581       1111.976  44.4
+ Wait GPU NB local         1    7      35310      33.360        466.129  18.6
+ NB X/F buffer ops.        1    7      70266       6.756         94.400   3.8
+ COM pull force            1    7      35310       0.733         10.246   0.4
+ AWH                       1    7      35310       0.383          5.347   0.2
+ Write traj.               1    7          3       0.139          1.943   0.1
+ Update                    1    7      35310       4.043         56.490   2.3
+ Constraints               1    7      35310       8.228        114.968   4.6
+ Rest                                              1.666         23.274   0.9
+--------------------------------------------------------------------------------
+ Total                                           179.213       2504.116 100.0
+--------------------------------------------------------------------------------
+ Breakdown of PME mesh activities
+--------------------------------------------------------------------------------
+ PME spread                1    7      35310      35.095        490.381  19.6
+ PME gather                1    7      35310      22.729        317.589  12.7
+ PME 3D-FFT                1    7      70620      19.514        272.672  10.9
+ PME solve Elec            1    7      35310       2.141         29.917   1.2
+--------------------------------------------------------------------------------
+
+               Core t (s)   Wall t (s)        (%)
+       Time:     1254.486      179.213      700.0
+                 (ns/day)    (hour/ns)
+Performance:       42.558        0.564
+Finished mdrun on rank 0 Wed Jan 10 12:18:37 2024
+
