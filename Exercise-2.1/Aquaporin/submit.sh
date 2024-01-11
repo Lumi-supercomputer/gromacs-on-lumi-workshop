@@ -11,7 +11,7 @@
 module use /appl/local/csc/modulefiles
 module load gromacs/2023.3-gpu
 
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
 
 srun gmx_mpi mdrun -s aquaporin \
                    -nb gpu \

@@ -1,6 +1,7 @@
 #!/bin/bash
-#SBATCH --partition=small-g
-#SBATCH --account=project_462000007
+#SBATCH --partition=FIXME
+#SBATCH --account=FIXME
+#SBATCH --reservation=FIXME
 #SBATCH --time=00:10:00
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=1
@@ -10,15 +11,15 @@
 module use /appl/local/csc/modulefiles
 module load gromacs/2023.3-gpu
 
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
 
 srun gmx_mpi mdrun -s aquaporin \
                    -nb gpu \
-                   -pme cpu \
-                   -bonded cpu \
+                   -pme gpu \
+                   -bonded gpu \
                    -update gpu \
                    -nsteps -1 \
-                   -maxh 0.1 \
+                   -maxh 0.017 \
                    -resethway \
                    -notunepme \
                    -g ex2.2_id${SLURM_JOB_ID}
