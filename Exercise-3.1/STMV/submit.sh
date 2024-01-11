@@ -1,6 +1,7 @@
 #!/bin/bash
-#SBATCH --partition=standard-g
-#SBATCH --account=project_462000002
+#SBATCH --partition=FIXME
+#SBATCH --account=FIXME
+#SBATCH --reservation=FIXME
 #SBATCH --time=00:05:00
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=4
