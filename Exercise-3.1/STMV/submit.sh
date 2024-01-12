@@ -4,8 +4,8 @@
 #SBATCH --reservation=FIXME
 #SBATCH --time=00:05:00
 #SBATCH --nodes=1
-#SBATCH --gpus-per-node=4
-#SBATCH --ntasks-per-node=4
+#SBATCH --gpus-per-node=2
+#SBATCH --ntasks-per-node=2
 
 module use /appl/local/csc/modulefiles
 module load gromacs/2023.3-gpu
