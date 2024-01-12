@@ -1,18 +1,15 @@
-System : STMV
+**System: STMV**
 
-No of atoms: 1066628
+No. of atoms: 1066628
 
-***Note**: 1. The .tpr file (pme_nvt.tpr) file used in the benchmarking is the same as the one provided in the exercise.</br>*
-*2. All simulations were performed on a single GPU node using 2 GCDs.* 
-
-
-## Exercise 3.1: Separate PME rank
+1. The .tpr file used in the benchmarking is the same as the one provided in the exercise
+2. All simulations were performed on two GCDs (2+1 PP+PME ranks, 7 threads per task)
 
 **Performance Analysis**
 
-| No of GPUs | Bonded | Non-Bonded |   PME   |   Update  |  Performance (ns/day) |  Job ID   |
-|------------| -------|------------|---------|-----------|-----------------------|-----------|
-|    2       |  cpu   |    gpu     |   gpu   |    cpu    |     7,617             |  5642710  |
-|    2       |  gpu   |    gpu     |   gpu   |    cpu    |     9,126             |  5648244  |
-|    2       |  cpu   |    gpu     |   gpu   |    gpu    |    11,199             |  5648188  |
-|    2       |  gpu   |    gpu     |   gpu   |    gpu    |    15,150             |  5648272  |
+| Bonded | Non-Bonded |   PME   |   Update  |  Performance (ns/day) | Job ID  |
+| -------|------------|---------|-----------|-----------------------|---------|
+|  gpu   |    gpu     |   gpu   |    gpu    |  18.035               | 5648650 |
+|  cpu   |    gpu     |   gpu   |    gpu    |  16.762               | 5648654 |
+|  cpu   |    gpu     |   gpu   |    cpu    |  12.424               | 5648655 |
+|  gpu   |    gpu     |   gpu   |    cpu    |  13.921               | 5648656 |
