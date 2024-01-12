@@ -29,4 +29,4 @@ srun --cpu-bind=${CPU_BIND} ./select_gpu \
                    -resethway \
                    -notunepme \
                    -npme 1 \
-                   -g ex3.1_id${SLURM_JOB_ID}
+                   -g ex3.2_id${SLURM_JOB_ID}
