@@ -3,7 +3,7 @@
 No. of atoms: 109992
 
 1. Replicas 01 - 08 provided in the folder ensemble_inputs is used for AWH simulation
-2. Simulations is performed using 1 complete GPU node such that each simulation (task) is executed on a single GCD (8 tasks on 8 GCDs)
+2. Simulations is performed using 1 complete GPU node such that simulation tasks (1 to 4) are executed on a single GCD (8 tasks on 8 GCDs)
 3. Direct GPU communication is used
 4. All force tasks (-bonded, -nb, -pme) and update was carried out on GPU.
 
