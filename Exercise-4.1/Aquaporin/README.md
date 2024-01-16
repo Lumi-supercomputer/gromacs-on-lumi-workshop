@@ -6,7 +6,7 @@ No. of atoms: 109992
 2. Simulations are performed using 1 complete GPU node such that 1 to 4 trajectories are run on a single GCD (8-32 ensemble members)
 3. All force tasks (`-bonded`, `-nb`, `-pme`) and update were carried out on GPU
 4. GPU utilization can be estimated with `srun --overlap --pty --jobid=<jobid> $SHELL` and then `watch rocm-smi`
-   * In practice, the average GPU utilization was calculated by logging the GPU use of a single device once a second during roughly 30 seconds in the middle of the job
+   * In practice, the average GPU utilization was estimated by logging the GPU use of a single device once a second during the job
 
 **Performance Analysis**
 
