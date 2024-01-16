@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --partition=FIXME
+#SBATCH --partition=small-g
 #SBATCH --account=project_465000934
-#SBATCH --reservation=FIXME
+#SBATCH --reservation=gromacs_thursday
 #SBATCH --time=00:10:00
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=1
