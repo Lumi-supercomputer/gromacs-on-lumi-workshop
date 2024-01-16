@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --partition=FIXME
-#SBATCH --account=FIXME
+#SBATCH --account=project_465000934
 #SBATCH --reservation=FIXME
 #SBATCH --exclusive
 #SBATCH --time=00:10:00
@@ -13,10 +13,6 @@ module load gromacs/2023.3-gpu
 source ${GMXBIN}/lumi-affinity.sh
 
 export OMP_NUM_THREADS=1
-
-export MPICH_GPU_SUPPORT_ENABLED=1
-export GMX_ENABLE_DIRECT_GPU_COMM=1
-export GMX_FORCE_GPU_AWARE_MPI=1
 
 srun --cpu-bind=${CPU_BIND} ./select_gpu \
      gmx_mpi mdrun -multidir repl_{01..32} \

@@ -2,19 +2,15 @@
 
 No. of atoms: 109992
 
-1. Replicas 01 - 08 provided in the folder ensemble_inputs is used for AWH simulation
-2. Simulations is performed using 1 complete GPU node such that simulation tasks (1 to 4) are executed on a single GCD (8 tasks on 8 GCDs)
-3. Direct GPU communication is used
-4. All force tasks (-bonded, -nb, -pme) and update was carried out on GPU.
+1. Replicas 01-32 provided in the folder `ensemble_inputs` is used for AWH simulation
+2. Simulations are performed using 1 complete GPU node such that 1 to 4 trajectories are run on a single GCD (8-32 ensemble members)
+3. All force tasks (`-bonded`, `-nb`, `-pme`) and update were carried out on GPU
 
 **Performance Analysis**
 
-| Tasks per GCD |  OMP_NUM_THREADS   | Average Performance (ns/day) | Aggregate Performance (ns/day) | Job ID      |
-|---------------|--------------------|------------------------------|--------------------------------|-------------|
-|       1       |        7           |       158.302                |      1266.41                   |  5651506    |
-|       2       |        1           |        84.653                |      1354.44                   |  5652056    |
-|       3       |        1           |        62.849                |      1508.30                   |  5652323    |
-|       4       |        1           |        49.252                |      1576,20                   |  5721469    |
-
-
-
+| Tasks per GCD |  OMP_NUM_THREADS   | Average Performance (ns/day) | Aggregate Performance (ns/day) | GPU utilization (%) | Job ID  |
+|---------------|--------------------|------------------------------|--------------------------------|---------------------|---------|
+|       1       |        7           |       160.505                |      1284.04                   |  40                 | 5733306 |
+|       2       |        3           |        82.359                |      1317.74                   |  50                 | 5733528 |
+|       3       |        2           |        61.354                |      1472.50                   |  80                 | 5733538 |
+|       4       |        1           |        50.967                |      1630.95                   |  90                 | 5733550 |
