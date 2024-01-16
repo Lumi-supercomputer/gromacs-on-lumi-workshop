@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --partition=FIXME
-#SBATCH --account=FIXME
+#SBATCH --account=project_465000934
 #SBATCH --reservation=FIXME
 #SBATCH --time=00:10:00
 #SBATCH --nodes=1
