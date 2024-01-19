@@ -40,10 +40,10 @@ of the License, or (at your option) any later version.
 GROMACS:      gmx mdrun, version 2023.3
 Executable:   /appl/local/csc/soft/chem/GROMACS/2023.3-hipSYCL-GPU/bin/gmx_mpi
 Data prefix:  /appl/local/csc/soft/chem/GROMACS/2023.3-hipSYCL-GPU
-Working dir:  /pfs/lustrep4/scratch/project_462000007/rkronber/gromacs/gmx-on-lumi/exercise-4.2/aquaporin/ensemble_inputs/sim_01
-Process ID:   52695
+Working dir:  /pfs/lustrep4/scratch/project_462000007/rkronber/gromacs/gmx-on-lumi/exercise-4.1/aquaporin/ensemble_inputs/sim_01
+Process ID:   83658
 Command line:
-  gmx_mpi mdrun -multidir sim_01 sim_02 sim_03 sim_04 sim_05 sim_06 sim_07 sim_08 sim_09 sim_10 sim_11 sim_12 sim_13 sim_14 sim_15 sim_16 -nb gpu -pme gpu -bonded gpu -update gpu -g ex4.2_16x3_jID5775020 -nsteps -1 -maxh 0.017 -resethway -notunepme
+  gmx_mpi mdrun -multidir sim_01 sim_02 sim_03 sim_04 sim_05 sim_06 sim_07 sim_08 sim_09 sim_10 sim_11 sim_12 sim_13 sim_14 sim_15 sim_16 -nb gpu -pme gpu -bonded gpu -update gpu -g ex4.1_1N_multi16_jID5777509 -nsteps -1 -maxh 0.017 -resethway -notunepme
 
 GROMACS version:    2023.3
 Precision:          mixed
@@ -74,7 +74,7 @@ hipSYCL version:    hipSYCL 0.9.4-git
 
 
 Running on 1 node with total 56 cores, 112 processing units, 1 compatible GPU
-Hardware detected on host nid007959 (the node of MPI rank 0):
+Hardware detected on host nid005000 (the node of MPI rank 0):
   CPU info:
     Vendor: AMD
     Brand:  AMD EPYC 7A53 64-Core Processor                
@@ -2605,7 +2605,7 @@ We have the following groups for center of mass motion removal:
 RMS relative constraint deviation after constraining: 6.33e-06
 Initial temperature: 310.812 K
 
-Started mdrun on rank 0 Fri Jan 19 12:22:29 2024
+Started mdrun on rank 0 Fri Jan 19 15:09:02 2024
 
 
 The -resethway functionality is deprecated, and may be removed in a future version.
@@ -2614,72 +2614,72 @@ The -resethway functionality is deprecated, and may be removed in a future versi
 
    Energies (kJ/mol)
            Bond            U-B    Proper Dih.  Improper Dih.      CMAP Dih.
-    2.69146e+04    1.15684e+05    8.89530e+04    2.45483e+03   -1.48959e+03
+    2.69146e+04    1.15684e+05    8.89531e+04    2.45483e+03   -1.48959e+03
           LJ-14     Coulomb-14        LJ (SR)   Coulomb (SR)   Coul. recip.
-    2.08506e+04    1.24638e+05    3.76780e+03   -1.25758e+06    7.82391e+03
+    2.08506e+04    1.24637e+05    3.76781e+03   -1.25758e+06    7.82391e+03
    COM Pull En.      Potential    Kinetic En.   Total Energy  Conserved En.
-    3.56766e+01   -8.67946e+05    3.09921e+05   -5.58025e+05   -5.58025e+05
+    3.56766e+01   -8.67947e+05    3.09921e+05   -5.58026e+05   -5.58026e+05
     Temperature Pressure (bar)   Constr. rmsd
-    3.10720e+02   -1.25615e+02    6.32770e-06
+    3.10720e+02   -1.25611e+02    6.32770e-06
 
 
-step 11661: resetting all time and cycle counters
-Restarted time on rank 0 Fri Jan 19 12:22:59 2024
+step 11291: resetting all time and cycle counters
+Restarted time on rank 0 Fri Jan 19 15:09:33 2024
 
 
-Step 23700: Run time exceeded 0.017 hours, will terminate the run within 400 steps
+Step 23200: Run time exceeded 0.017 hours, will terminate the run within 400 steps
            Step           Time
-          23900       59.75000
+          23300       58.25000
 
-Writing checkpoint, step 23900 at Fri Jan 19 12:23:30 2024
+Writing checkpoint, step 23300 at Fri Jan 19 15:10:03 2024
 
 
    Energies (kJ/mol)
            Bond            U-B    Proper Dih.  Improper Dih.      CMAP Dih.
-    2.68460e+04    1.16275e+05    8.85495e+04    2.49123e+03   -1.39787e+03
+    2.58910e+04    1.15999e+05    8.84157e+04    2.40492e+03   -1.59604e+03
           LJ-14     Coulomb-14        LJ (SR)   Coulomb (SR)   Coul. recip.
-    2.07274e+04    1.24112e+05    3.26191e+03   -1.25686e+06    7.88637e+03
+    2.09890e+04    1.24340e+05    6.04585e+03   -1.26147e+06    7.81144e+03
    COM Pull En.      Potential    Kinetic En.   Total Energy  Conserved En.
-    3.53607e+01   -8.68076e+05    3.07069e+05   -5.61007e+05   -5.51142e+05
+    3.58566e+01   -8.71128e+05    3.08871e+05   -5.62258e+05   -5.51045e+05
     Temperature Pressure (bar)   Constr. rmsd
-    3.07861e+02   -1.93158e+02    6.32770e-06
+    3.09667e+02    2.03900e+02    6.32770e-06
 
 
-Energy conservation over simulation part #1 of length 59.75 ps, time 0 to 59.75 ps
-  Conserved energy drift: 1.05e-03 kJ/mol/ps per atom
+Energy conservation over simulation part #1 of length 58.25 ps, time 0 to 58.25 ps
+  Conserved energy drift: 1.09e-03 kJ/mol/ps per atom
 
 
 	<======  ###############  ==>
 	<====  A V E R A G E S  ====>
 	<==  ###############  ======>
 
-	Statistics over 23901 steps using 120 frames
+	Statistics over 23301 steps using 117 frames
 
    Energies (kJ/mol)
            Bond            U-B    Proper Dih.  Improper Dih.      CMAP Dih.
-    2.64014e+04    1.16000e+05    8.87371e+04    2.49453e+03   -1.42609e+03
+    2.63484e+04    1.16080e+05    8.87710e+04    2.50082e+03   -1.45437e+03
           LJ-14     Coulomb-14        LJ (SR)   Coulomb (SR)   Coul. recip.
-    2.08299e+04    1.24279e+05    4.62512e+03   -1.25876e+06    7.78194e+03
+    2.08048e+04    1.24389e+05    4.91798e+03   -1.25972e+06    7.78062e+03
    COM Pull En.      Potential    Kinetic En.   Total Energy  Conserved En.
-    3.54976e+01   -8.69003e+05    3.08990e+05   -5.60013e+05   -5.54415e+05
+    3.54451e+01   -8.69550e+05    3.09099e+05   -5.60452e+05   -5.54409e+05
     Temperature Pressure (bar)   Constr. rmsd
-    3.09786e+02    7.14159e+00    0.00000e+00
+    3.09896e+02    2.41027e+01    0.00000e+00
 
           Box-X          Box-Y          Box-Z
-    1.16126e+01    1.00568e+01    9.12497e+00
+    1.16090e+01    1.00537e+01    9.12754e+00
 
    Total Virial (kJ/mol)
-    1.02486e+05    6.75994e+02    1.16531e+02
-    6.75971e+02    1.01198e+05    9.22522e+02
-    1.16557e+02    9.22571e+02    1.04622e+05
+    1.01586e+05    2.17513e+02   -1.70225e+02
+    2.17472e+02    1.01258e+05    5.53957e+01
+   -1.70110e+02    5.53994e+01    1.03944e+05
 
    Pressure (bar)
-   -1.05970e+01   -2.06898e+01   -5.46936e+00
-   -2.06890e+01    2.14205e+01   -2.23316e+01
-   -5.47015e+00   -2.23331e+01    1.06012e+01
+    1.27022e+01   -6.57109e+00    4.78510e+00
+   -6.56982e+00    2.70430e+01    3.88738e+00
+    4.78151e+00    3.88726e+00    3.25629e+01
 
       T-Protein         T-POPCT-AMM_Water_and_ions
-    3.09909e+02    3.10519e+02    3.09283e+02
+    3.10266e+02    3.10464e+02    3.09432e+02
 
 
 	M E G A - F L O P S   A C C O U N T I N G
@@ -2691,22 +2691,22 @@ Energy conservation over simulation part #1 of length 59.75 ps, time 0 to 59.75 
 
  Computing:                               M-Number         M-Flops  % Flops
 -----------------------------------------------------------------------------
- Pair Search distance check            1598.771264       14388.941     0.0
- NxN QSTab Elec. + LJ [F]           1629152.517248    86345083.414    98.3
- NxN QSTab Elec. + LJ [V&F]            8292.980352      671731.409     0.8
- 1,4 nonbonded interactions            1530.832320      137774.909     0.2
- Shift-X                                 13.529016          81.174     0.0
- Bonds                                  241.568640       14252.550     0.0
- Propers                               1766.134080      404444.704     0.5
- Impropers                               32.068800        6670.310     0.0
- Virial                                  67.342644        1212.168     0.0
- Stop-CM                                  6.709512          67.095     0.0
- P-Coupling                              67.315104         403.891     0.0
- Calc-Ekin                              269.260416        7270.031     0.0
- CMAP                                    11.554560       19642.752     0.0
- Urey-Bradley                          1092.395520      199908.380     0.2
+ Pair Search distance check            1572.100400       14148.904     0.0
+ NxN QSTab Elec. + LJ [F]           1597207.043520    84651973.307    98.3
+ NxN QSTab Elec. + LJ [V&F]            8153.855040      660462.258     0.8
+ 1,4 nonbonded interactions            1502.066680      135186.001     0.2
+ Shift-X                                 13.309032          79.854     0.0
+ Bonds                                  237.029360       13984.732     0.0
+ Propers                               1732.946920      396844.845     0.5
+ Impropers                               31.466200        6544.970     0.0
+ Virial                                  66.132237        1190.380     0.0
+ Stop-CM                                  6.599520          65.995     0.0
+ P-Coupling                              66.105192         396.631     0.0
+ Calc-Ekin                              264.200784        7133.421     0.0
+ CMAP                                    11.337440       19273.648     0.0
+ Urey-Bradley                          1071.868480      196151.932     0.2
 -----------------------------------------------------------------------------
- Total                                                87822931.728   100.0
+ Total                                                86103436.878   100.0
 -----------------------------------------------------------------------------
 
 
@@ -2717,31 +2717,31 @@ On 1 MPI rank, each using 3 OpenMP threads
  Activity:              Num   Num      Call    Wall time         Giga-Cycles
                         Ranks Threads  Count      (s)         total sum    %
 --------------------------------------------------------------------------------
- Neighbor search           1    3        123       2.061         12.341   6.6
- Launch PP GPU ops.        1    3      24357       1.369          8.196   4.4
- Force                     1    3      12240       2.330         13.956   7.5
- PME GPU mesh              1    3      12240       0.744          4.457   2.4
- Wait Bonded GPU           1    3         62       0.015          0.089   0.0
- Wait GPU NB local         1    3      11628       0.002          0.011   0.0
- Wait GPU state copy       1    3      14933      18.026        107.944  58.1
- NB X/F buffer ops.        1    3        612       0.178          1.066   0.6
- COM pull force            1    3      12240       0.398          2.383   1.3
- AWH                       1    3      12240       1.494          8.948   4.8
- Write traj.               1    3          2       0.160          0.957   0.5
- Rest                                              4.258         25.501  13.7
+ Neighbor search           1    3        121       2.056         12.309   6.6
+ Launch PP GPU ops.        1    3      23899       1.344          8.046   4.3
+ Force                     1    3      12010       2.552         15.285   8.3
+ PME GPU mesh              1    3      12010       0.723          4.327   2.3
+ Wait Bonded GPU           1    3         61       0.010          0.062   0.0
+ Wait GPU NB local         1    3      11409       0.002          0.012   0.0
+ Wait GPU state copy       1    3      14653      17.751        106.300  57.4
+ NB X/F buffer ops.        1    3        601       0.170          1.015   0.5
+ COM pull force            1    3      12010       0.406          2.429   1.3
+ AWH                       1    3      12010       2.274         13.620   7.4
+ Write traj.               1    3          2       0.217          1.301   0.7
+ Rest                                              3.418         20.471  11.1
 --------------------------------------------------------------------------------
- Total                                            31.035        185.847 100.0
+ Total                                            30.923        185.176 100.0
 --------------------------------------------------------------------------------
  Breakdown of PME mesh activities
 --------------------------------------------------------------------------------
- Wait PME GPU gather       1    3      12240       0.435          2.602   1.4
- Reduce GPU PME F          1    3      12240       0.064          0.381   0.2
- Launch PME GPU ops.       1    3     110160       0.204          1.224   0.7
+ Wait PME GPU gather       1    3      12010       0.398          2.386   1.3
+ Reduce GPU PME F          1    3      12010       0.082          0.492   0.3
+ Launch PME GPU ops.       1    3     108090       0.200          1.199   0.6
 --------------------------------------------------------------------------------
 
                Core t (s)   Wall t (s)        (%)
-       Time:       93.099       31.035      300.0
+       Time:       92.763       30.923      300.0
                  (ns/day)    (hour/ns)
-Performance:       85.190        0.282
-Finished mdrun on rank 0 Fri Jan 19 12:23:30 2024
+Performance:       83.892        0.286
+Finished mdrun on rank 0 Fri Jan 19 15:10:04 2024
 
