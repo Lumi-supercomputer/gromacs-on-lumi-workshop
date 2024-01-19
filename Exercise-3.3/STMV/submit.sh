@@ -19,7 +19,7 @@ export GMX_ENABLE_DIRECT_GPU_COMM=1
 export GMX_FORCE_GPU_AWARE_MPI=1
 
 srun --cpu-bind=${CPU_BIND} ./select_gpu \
-     gmx_mpi mdrun -s pme_nvt \
+     gmx_mpi mdrun \
                    -npme 1  \
                    -nb gpu -pme gpu -bonded gpu -update gpu \
                    -g ex3.3_${SLURM_NTASKS}x${OMP_NUM_THREADS}_jID${SLURM_JOB_ID} \

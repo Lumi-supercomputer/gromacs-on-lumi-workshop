@@ -13,7 +13,7 @@ module load gromacs/2023.3-gpu
 
 export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
 
-srun gmx_mpi mdrun -s topol \
+srun gmx_mpi mdrun \
                    -npme 1  \
                    -nb gpu -pme gpu -bonded gpu -update gpu \
                    -g ex3.1_${SLURM_NTASKS}x${OMP_NUM_THREADS}_jID${SLURM_JOB_ID} \
