@@ -1,6 +1,6 @@
 **System: Aquaporin**
 
-No. of atoms: 1066628
+No. of atoms: 109992
 
 1. Replicas 01-16 provided in the folder `ensemble_inputs` was used for AWH simulation
 2. Simulations were performed using 2 complete GPU nodes
