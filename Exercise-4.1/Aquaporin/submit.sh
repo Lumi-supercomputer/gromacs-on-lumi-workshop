@@ -15,13 +15,7 @@ source ${GMXBIN}/lumi-affinity.sh
 export OMP_NUM_THREADS=1
 
 srun --cpu-bind=${CPU_BIND} ./select_gpu \
-     gmx_mpi mdrun -multidir repl_{01..32} \
-                   -nb gpu \
-                   -pme gpu \
-                   -bonded gpu \
-                   -update gpu \
-                   -nsteps -1 \
-                   -maxh 0.1 \
-                   -resethway \
-                   -notunepme \
-                   -g ex4.1_id${SLURM_JOB_ID}.log
+     gmx_mpi mdrun -multidir sim_{01..32} \
+                   -nb gpu -pme gpu -bonded gpu -update gpu \
+                   -g ex4.1_${SLURM_NTASKS}x${OMP_NUM_THREADS}_jID${SLURM_JOB_ID} \
+                   -nsteps -1 -maxh 0.017 -resethway -notunepme

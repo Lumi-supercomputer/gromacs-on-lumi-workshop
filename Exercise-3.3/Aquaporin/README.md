@@ -10,7 +10,7 @@ No. of atoms: 109992
 
 | GCDs | Bonded | Non-Bonded |   PME   |   Update  | nstlist |  Performance (ns/day) | Job ID  |
 |------|--------|------------|---------|-----------|---------|-----------------------|---------|
-|  4   |  gpu   |    gpu     |   gpu   |    gpu    | 100     |  190.358              | 5650144 |
-|  6   |  gpu   |    gpu     |   gpu   |    gpu    | 100     |  200.802              | 5650146 |
-|  8   |  gpu   |    gpu     |   gpu   |    gpu    | 100     |  206.326              | 5650244 |
-|  8   |  gpu   |    gpu     |   gpu   |    gpu    | 150     |  205.823              | 5650497 |
+|  4   |  gpu   |    gpu     |   gpu   |    gpu    | 100     |  190.402              | 5773959 |
+|  6   |  gpu   |    gpu     |   gpu   |    gpu    | 100     |  211.804              | 5773961 |
+|  8   |  gpu   |    gpu     |   gpu   |    gpu    | 100     |  195.288              | 5774005 |
+|  8   |  gpu   |    gpu     |   gpu   |    gpu    | 150     |  175.390              | 5774009 |

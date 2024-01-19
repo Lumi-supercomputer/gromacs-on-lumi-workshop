@@ -9,7 +9,7 @@ No. of atoms: 109992
 
 | Bonded | Non-Bonded |   PME   |   Update  |  Performance (ns/day) | Job ID  |
 | -------|------------|---------|-----------|-----------------------|---------|
-|  cpu   |    cpu     |   cpu   |    cpu    |  7.907                | 5643359 |
-|  cpu   |    gpu     |   cpu   |    cpu    |  46.166               | 5643362 |
-|  cpu   |    gpu     |   gpu   |    cpu    |  79.469               | 5643450 |
-|  gpu   |    gpu     |   gpu   |    cpu    |  121.078              | 5643458 |
+|  cpu   |    cpu     |   cpu   |    cpu    |  7.128                | 5771448 |
+|  cpu   |    gpu     |   cpu   |    cpu    |  41.507               | 5771450 |
+|  cpu   |    gpu     |   gpu   |    cpu    |  72.591               | 5771508 |
+|  gpu   |    gpu     |   gpu   |    cpu    |  115.206              | 5771510 |
