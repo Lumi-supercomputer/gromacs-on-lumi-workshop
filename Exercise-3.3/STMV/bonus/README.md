@@ -8,6 +8,6 @@ No. of atoms: 1066628
 
 **Performance Analysis**
 
-| GCDs | Bonded | Non-Bonded |   PME   |   Update  | nstlist |  Performance (ns/day) | Job ID  |
-|------|--------|------------|---------|-----------|---------|-----------------------|---------|
-|  2   |  gpu   |    gpu     |   gpu   |    gpu    | 100     |  28.404               | 5877514 |
+| GCDs | Non-Bonded |   PME  | Bonded |   Update  | nstlist |  Performance (ns/day) | Job ID  |
+|------|------------|--------|--------|-----------|---------|-----------------------|---------|
+|  2   |    gpu     |   gpu  |  gpu   |    gpu    | 100     |  30.657               | 8496143 |

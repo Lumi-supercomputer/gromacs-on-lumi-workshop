@@ -5,11 +5,11 @@
 #SBATCH --time=00:10:00
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=2
-#SBATCH --ntasks-per-node=3
+#SBATCH --ntasks-per-node=2
 #SBATCH --cpus-per-task=7
 
 module use /appl/local/csc/modulefiles
-module load gromacs/2023.3-gpu
+module load gromacs/2024.4-gpu
 
 export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
 

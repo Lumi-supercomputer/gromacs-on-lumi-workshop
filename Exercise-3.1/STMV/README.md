@@ -7,9 +7,9 @@ No. of atoms: 1066628
 
 **Performance Analysis**
 
-| Bonded | Non-Bonded |   PME   |   Update  |  Performance (ns/day) | Job ID  |
-| -------|------------|---------|-----------|-----------------------|---------|
-|  gpu   |    gpu     |   gpu   |    gpu    |  13.931               | 5773060 |
-|  cpu   |    gpu     |   gpu   |    gpu    |  10.460               | 5773064 |
-|  cpu   |    gpu     |   gpu   |    cpu    |  6.980                | 5773128 |
-|  gpu   |    gpu     |   gpu   |    cpu    |  8.346                | 5773130 |
+| Non-Bonded |   PME  | Bonded |   Update  |  Performance (ns/day) | Job ID  |
+|------------|--------| -------|-----------|-----------------------|---------|
+|    gpu     |   gpu  |  cpu   |    cpu    |  8.680                | 8486620 |
+|    gpu     |   gpu  |  cpu   |    gpu    |  13.632               | 8486894 |
+|    gpu     |   gpu  |  gpu   |    cpu    |  8.145                | 8486764 |
+|    gpu     |   gpu  |  gpu   |    gpu    |  14.476               | 8486950 |
